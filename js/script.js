@@ -305,6 +305,7 @@ if (window.MODE_ENDPOINT === 'GEMINI' && typeof window.fetch === 'function') {
           if (data) {
             return {
               ...result,
+              ok: response.ok,
               success: response.ok,
               imageUrl: `data:image/png;base64,${data}`,
             };
@@ -334,6 +335,7 @@ if (window.MODE_ENDPOINT === 'GEMINI' && typeof window.fetch === 'function') {
             return {
               ...result,
               response: data,
+              ok: response.ok,
               success: response.ok,
             };
           }

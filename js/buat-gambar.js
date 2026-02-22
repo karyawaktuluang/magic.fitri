@@ -166,6 +166,7 @@ function initBuatGambar(config = {}) {
             },
             body: formData
           });
+          console.log(response);
           if (!response.ok) throw new Error(typeof getApiErrorMessage === 'function' ? await getApiErrorMessage(response) : "API Error");
           const result = await response.json();
           if (!result.success || !result.imageUrl) throw new Error("Gagal membuat gambar (No data).");
