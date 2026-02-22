@@ -1,0 +1,21 @@
+{
+  "name": "Sulap Foto",
+  "short_name": "Sulap Foto",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "assets/sflogo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/sflogo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
