@@ -1427,19 +1427,20 @@ Trimakasih`
   async function _updateQuotaInternal(count = 1) {
     // No-op
   }
-
-  const fbReelUrls = []; // Not used
-  const originalFetch = window.fetch;
-  window.fetch = async (...args) => {
-    if (!navigator.onLine) {
-      return Promise.reject(new Error("Tidak ada koneksi internet."));
-    }
-    const response = await originalFetch(...args);
-    if (response.status === 401 || response.status === 403) {
-      return Promise.reject(new Error(`Request failed: ${response.status}`));
-    }
-    return response;
-  };
+  if (!window.MODE_ENDPOINT === 'GEMINI') {
+    const fbReelUrls = []; // Not used
+    const originalFetch = window.fetch;
+    window.fetch = async (...args) => {
+      if (!navigator.onLine) {
+        return Promise.reject(new Error("Tidak ada koneksi internet."));
+      }
+      const response = await originalFetch(...args);
+      if (response.status === 401 || response.status === 403) {
+        return Promise.reject(new Error(`Request failed: ${response.status}`));
+      }
+      return response;
+    };
+  }
 
   function showQuotaLimitModal() {
     console.log("Quota limit modal disabled");
