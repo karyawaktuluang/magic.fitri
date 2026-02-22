@@ -18,15 +18,32 @@ window.JSON.parse = function (text, reviver) {
     return result;
   }
 }
+
+function replaceBranding(oldText, newText) {
+  const walker = document.createTreeWalker(
+    document.body,
+    NodeFilter.SHOW_TEXT,
+    null,
+    false
+  );
+  let node;
+  while (node = walker.nextNode()) {
+    if (node.nodeValue.includes(oldText)) {
+      node.nodeValue = node.nodeValue.replaceAll(oldText, newText);
+    }
+  }
+}
+
 document.querySelectorAll('button.sidebar-btn').forEach(button => {
   button.addEventListener('click', (e) => {
     localStorage.setItem('sulapfoto_last_menu', e.currentTarget.id);
   });
 });
 document.addEventListener('DOMContentLoaded', () => {
+  replaceBranding('Sulap Foto', window.APP_NAME);
   setTimeout(function () {
     const button = document.querySelector('button.sidebar-btn#' + (localStorage.getItem('sulapfoto_last_menu') ?? 'tab-beranda'));
-    button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
   }, 3000);
 });
 let API_KEY = window.API_KEY || "";
@@ -262,6 +279,7 @@ if (window.MODE_ENDPOINT === 'GEMINI' && typeof window.fetch === 'function') {
         for (const image of Array.isArray(body.images ?? []) ? body.images ?? [] : [body.images,]) {
           parts.push({inlineData: {mimeType: image.type, data: await fileToBase64(image)}});
         }
+
         function nearestStandardRatio(ratioStr) {
           const standards = [
             '1:1',
@@ -1429,6 +1447,7 @@ Trimakasih`
   async function _updateQuotaInternal(count = 1) {
     // No-op
   }
+
   if (!window.MODE_ENDPOINT === 'GEMINI') {
     const fbReelUrls = []; // Not used
     const originalFetch = window.fetch;
@@ -3244,8 +3263,11 @@ Trimakasih`
     const rmpVolume = document.getElementById('rmp-volume');
     const rmpToggle = document.getElementById('rmp-toggle');
     const tracks = [
+      {title: 'Surah Ar Rahman', src: 'https://cdn.jsdelivr.net/gh/syifarahmat/sulap.foto@b1af49376aa57ea3c63f809b8377ff681512d335/assets/055 Ar Rahman.mp3'},
       {title: 'Penuh Berkah', src: 'https://cdn.jsdelivr.net/gh/syifarahmat/sulap.foto@b1af49376aa57ea3c63f809b8377ff681512d335/assets/Penuh Berkah.mp3'},
-      {title: 'Ramadhan Cuan', src: 'https://cdn.jsdelivr.net/gh/syifarahmat/sulap.foto@b1af49376aa57ea3c63f809b8377ff681512d335/assets/Ramadhan Cuan.mp3'}
+      {title: 'Surah Yusuf', src: 'https://cdn.jsdelivr.net/gh/syifarahmat/sulap.foto@b1af49376aa57ea3c63f809b8377ff681512d335/assets/012 Yusuf.mp3'},
+      {title: 'Ramadhan Cuan', src: 'https://cdn.jsdelivr.net/gh/syifarahmat/sulap.foto@b1af49376aa57ea3c63f809b8377ff681512d335/assets/Ramadhan Cuan.mp3'},
+      {title: 'Surah An Nisa', src: 'https://cdn.jsdelivr.net/gh/syifarahmat/sulap.foto@b1af49376aa57ea3c63f809b8377ff681512d335/assets/004 An Nisa.mp3'},
     ];
     let currentIndex = 0;
     let hasAutoPlayed = false;
