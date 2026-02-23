@@ -32,7 +32,7 @@
             <i class="fas fa-house"></i>
             <span>Beranda</span>
         </div>
-        <div class="sidebar-nav-item sidebar-nav-center" onclick="openAssistantModal()" data-tooltip="SuFi AI" data-page="assistant-modal">
+        <div class="sidebar-nav-item" onclick="openAssistantModal()" data-tooltip="SuFi AI" data-page="assistant-modal">
             <i class="fas fa-robot"></i>
             <span>SuFi AI</span>
         </div>
@@ -108,10 +108,6 @@
             <i class="fas fa-th-large"></i>
             <span>Semua Fitur</span>
         </div>
-        <div class="sidebar-nav-item" onclick="window.open('https://ichsanlabs.com/sulapfoto', '_blank', 'noopener')" data-tooltip="Sulap Foto">
-            <i class="fas fa-magic"></i>
-            <span>Donasi</span>
-        </div>
         <div class="sidebar-nav-item hidden" onclick="window.open('https://ichsanlabs.com/aff-sulapfitri', '_blank', 'noopener')" data-tooltip="Affiliasi 50%">
             <i class="fas fa-hand-holding-dollar"></i>
             <span>Affiliasi 50%</span>
@@ -151,7 +147,7 @@
             <h2 id="user-greeting">Assalamualaikum,</h2>
             <h1 id="user-email-display">—</h1>
         </div>
-        <button class="icon-btn" id="btn-logout" type="button" title="Keluar">
+        <button class="icon-btn" id="btn-logout" type="button" title="Goto Website">
             <i class="fas fa-sign-out-alt"></i>
         </button>
     </header>
@@ -163,7 +159,7 @@
         </div>
         <div class="countdown" id="countdown-timer">04:32:15</div>
         <div style="font-size: 0.8rem; opacity: 0.8; text-align: center;">Menuju Berbuka Puasa ~ <span id="prayer-maghrib">18:10:00</span></div>
-        <div class="online-info-card">
+        <div class="online-info-card hidden">
             <div class="online-info-header">
                 <div class="online-info-title">
                     <i class="fas fa-users"></i>
@@ -448,7 +444,7 @@
     <div class="nav-item" onclick="openQuranModal()"><i class="fas fa-quran"></i></div>
     <div class="nav-center" onclick="openAssistantModal()"><i class="fas fa-robot"></i></div>
     <div class="nav-item" onclick="openAllFeaturesModal()"><i class="fas fa-compass"></i></div>
-    <div class="nav-item" onclick="openProfileModal()"><i class="fas fa-user"></i></div>
+    <div class="nav-item" onclick="openProfileModal()"><i class="fas fa-dollar-sign"></i></div>
 </nav>
 <!-- Foto Ramadhan Modal -->
 <div id="fr-modal" class="feature-page hidden">
@@ -3023,29 +3019,6 @@
                 </div>
                 <div class="feature-menu-label">Kaligrafi Nama</div>
             </div>
-        </div>
-    </div>
-</div>
-<div id="profile-modal" class="feature-page hidden">
-    <div class="modal-content">
-        <button class="close-modal" onclick="window.closeFeaturePage('profile-modal')"><i class="fas fa-arrow-left"></i> Kembali</button>
-        <div class="profile-header">
-            <h2>Profil</h2>
-            <p>Informasi akun yang sedang aktif</p>
-        </div>
-        <div class="profile-card">
-            <div class="profile-row">
-                <span>Email</span>
-                <span id="profile-email-value" class="profile-value">—</span>
-            </div>
-            <button onclick="window.open('https://ichsanlabs.com/aff-sulapfitri', '_blank', 'noopener')" class="profile-affiliate-btn" type="button">
-                <i class="fas fa-hand-holding-dollar"></i>
-                <span>Affiliasi Komisi 50%</span>
-            </button>
-            <button id="profile-logout-btn" class="profile-logout-btn" type="button">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Keluar</span>
-            </button>
         </div>
     </div>
 </div>
