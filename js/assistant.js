@@ -1,1 +1,969 @@
-const _0x1bc161=_0x4d12;(function(_0x36b862,_0x30de03){const _0x3b8f37=_0x4d12,_0x2710de=_0x36b862();while(!![]){try{const _0x202fa7=-parseInt(_0x3b8f37(0x238))/(-0x1*-0x184f+0x1a23*-0x1+-0x7*-0x43)*(parseInt(_0x3b8f37(0x2d8))/(-0x83e+0xbd9+-0x399))+parseInt(_0x3b8f37(0x21c))/(-0x2*0xf86+-0x234a+-0x4f*-0xd7)+parseInt(_0x3b8f37(0x22d))/(-0x18d3+0x70c+0x11cb)*(parseInt(_0x3b8f37(0x1f2))/(-0x895+0x202f+-0x1795))+-parseInt(_0x3b8f37(0x22f))/(-0xab8+-0x3*-0x329+0x143)+parseInt(_0x3b8f37(0x224))/(-0x1*-0x2527+-0x44f+-0x20d1)*(-parseInt(_0x3b8f37(0x26c))/(0xb*-0x2d7+-0x221+0x5*0x6ae))+parseInt(_0x3b8f37(0x287))/(-0x1abc+0xf*0x20f+-0x41c)+parseInt(_0x3b8f37(0x1cc))/(-0x1e7e+-0x327+0x21af);if(_0x202fa7===_0x30de03)break;else _0x2710de['push'](_0x2710de['shift']());}catch(_0x24a672){_0x2710de['push'](_0x2710de['shift']());}}}(_0x478c,-0x12d3c*-0x1+-0x8*0x30f4+-0x1*-0x44339));var assistantModal=document[_0x1bc161(0x2f1)](_0x1bc161(0x2dd)),chatContainer=document[_0x1bc161(0x2f1)](_0x1bc161(0x264)),chatInput=document['getElementById'](_0x1bc161(0x1b3)),chatFileInput=document['getElementById']('chat-file-input'),chatImagePreviewContainer=document[_0x1bc161(0x2f1)](_0x1bc161(0x311)),chatImagePreview=document[_0x1bc161(0x2f1)](_0x1bc161(0x189)),chatSendBtn=document[_0x1bc161(0x2f1)](_0x1bc161(0x26b)),chatImageBtn=document['getElementById'](_0x1bc161(0x2fa)),voiceMicBtn=document[_0x1bc161(0x2f1)]('voice-mic-btn'),voiceUi=document[_0x1bc161(0x2f1)]('voice-ui'),voiceOrb=document[_0x1bc161(0x2f1)]('voice-orb'),voiceStatus=document[_0x1bc161(0x2f1)](_0x1bc161(0x23f)),voiceStatusText=document[_0x1bc161(0x2f1)](_0x1bc161(0x221)),voiceStatusIcon=document[_0x1bc161(0x2f1)](_0x1bc161(0x171)),aiResponseAudio=new Audio(_0x1bc161(0x2ec)),currentChatImage=null,currentMode=null,voiceRecognizer=null,isVoiceListening=![],isVoiceStarting=![],ttsAudio=null,CHAT_HISTORY_KEY='sulapfitri_sufi_history',CHAT_HISTORY_LIMIT=0x1280+0xc1+-0x1329;function loadChatHistory(){const _0x18780a=_0x1bc161,_0x5e4909={'LDvCT':function(_0x2ad9cb,_0x4fe236){return _0x2ad9cb===_0x4fe236;},'yUEqt':_0x18780a(0x260),'iCIOA':_0x18780a(0x1ee),'mGPtR':function(_0x94e374,_0x74d3d7){return _0x94e374!==_0x74d3d7;},'AHEdD':_0x18780a(0x14e)};try{const _0x1ea168=_0x5e4909[_0x18780a(0x1aa)][_0x18780a(0x17e)]('|');let _0x1582d9=0x55*-0x43+-0x124*-0x2+0x13f7;while(!![]){switch(_0x1ea168[_0x1582d9++]){case'0':var _0x56f286=localStorage[_0x18780a(0x2a0)](CHAT_HISTORY_KEY);continue;case'1':var _0x3ff42f=JSON[_0x18780a(0x1f1)](_0x56f286);continue;case'2':if(!Array[_0x18780a(0x2b7)](_0x3ff42f))return[];continue;case'3':return _0x3ff42f[_0x18780a(0x154)](function(_0x456611){const _0x39b374=_0x18780a;return _0x456611&&_0x5e4909['LDvCT'](typeof _0x456611,_0x5e4909['yUEqt'])&&typeof _0x456611[_0x39b374(0x2d5)]===_0x5e4909[_0x39b374(0x192)]&&_0x5e4909[_0x39b374(0x307)](_0x456611[_0x39b374(0x2d5)][_0x39b374(0x14b)](),'');});case'4':if(!_0x56f286)return[];continue;}break;}}catch(_0x48b0db){return[];}}function saveChatHistory(_0x473bc5){const _0x4d0e60=_0x1bc161;try{localStorage[_0x4d0e60(0x2ad)](CHAT_HISTORY_KEY,JSON[_0x4d0e60(0x1af)](_0x473bc5));}catch(_0x52e590){}}function addChatHistory(_0x4d1fc7,_0x366842){const _0x3966be=_0x1bc161,_0x5bb0b7={'mMMdh':function(_0x4e9156,_0x3442f0){return _0x4e9156===_0x3442f0;},'rcVoC':_0x3966be(0x2df),'RvDSY':_0x3966be(0x17c),'cfcdF':function(_0x53e2f7,_0x1f1b8a){return _0x53e2f7||_0x1f1b8a;},'nFzKI':function(_0x27094b,_0x22465f){return _0x27094b>_0x22465f;},'CiruA':function(_0x4a806f,_0x40026e){return _0x4a806f-_0x40026e;}};var _0x38ddf6=(_0x366842||'')[_0x3966be(0x14b)]();if(!_0x38ddf6)return;var _0x34b6b1=loadChatHistory();_0x34b6b1[_0x3966be(0x24a)]({'role':_0x5bb0b7[_0x3966be(0x26a)](_0x4d1fc7,_0x5bb0b7['rcVoC'])?_0x5bb0b7[_0x3966be(0x181)]:_0x5bb0b7['RvDSY'],'text':_0x38ddf6,'mode':_0x5bb0b7['cfcdF'](currentMode,'unknown'),'ts':Date['now']()}),_0x5bb0b7[_0x3966be(0x2ee)](_0x34b6b1['length'],CHAT_HISTORY_LIMIT)&&(_0x34b6b1=_0x34b6b1[_0x3966be(0x266)](_0x5bb0b7[_0x3966be(0x28b)](_0x34b6b1[_0x3966be(0x2d1)],CHAT_HISTORY_LIMIT))),saveChatHistory(_0x34b6b1);}function buildContextLines(_0x3711f8){const _0x7be373=_0x1bc161,_0x1f0953={'Vokse':function(_0x10ef0c,_0x1ff94a){return _0x10ef0c===_0x1ff94a;},'WFkOJ':_0x7be373(0x2df),'nRAFA':_0x7be373(0x16b),'HBDMI':_0x7be373(0x1e1),'NJfoj':function(_0xb4b34c,_0x3738d5){return _0xb4b34c+_0x3738d5;},'mgmkq':function(_0x394d5e){return _0x394d5e();},'RNdcP':function(_0x3c1868,_0x95c0e1){return _0x3c1868-_0x95c0e1;}};var _0x1394f7=_0x1f0953[_0x7be373(0x179)](loadChatHistory);if(_0x1394f7[_0x7be373(0x2d1)]&&_0x3711f8){var _0x161380=_0x1394f7[_0x1f0953[_0x7be373(0x14c)](_0x1394f7[_0x7be373(0x2d1)],0xc1*0x30+0x1f7d+-0x43ac)];_0x161380&&_0x1f0953[_0x7be373(0x18c)](_0x161380[_0x7be373(0x270)],_0x7be373(0x2df))&&_0x1f0953[_0x7be373(0x18c)](_0x161380[_0x7be373(0x2d5)],_0x3711f8)&&(_0x1394f7=_0x1394f7[_0x7be373(0x266)](-0x1fc1+0x89+0x1f38,-(0x1554+-0x5*-0x15c+0x1*-0x1c1f)));}return _0x1394f7[_0x7be373(0x263)](function(_0x219d41){const _0x16cc20=_0x7be373;var _0x2576c0=_0x1f0953[_0x16cc20(0x18c)](_0x219d41[_0x16cc20(0x270)],_0x1f0953[_0x16cc20(0x186)])?_0x1f0953[_0x16cc20(0x295)]:_0x1f0953[_0x16cc20(0x225)];return _0x1f0953[_0x16cc20(0x257)](_0x2576c0+':\x20',_0x219d41[_0x16cc20(0x2d5)]);});}function buildChatPrompt(_0x5adc54){const _0x4934c5=_0x1bc161,_0x49a9f7={'iKrrA':function(_0x1c8cb8,_0x26e12f){return _0x1c8cb8+_0x26e12f;},'CVCfG':function(_0x23353f,_0x29ad4d){return _0x23353f+_0x29ad4d;},'KjPYv':_0x4934c5(0x2a2),'SzcoH':_0x4934c5(0x1ac),'Ewjom':function(_0x1f414b,_0x30b22d){return _0x1f414b+_0x30b22d;},'cYANQ':'User:\x20'};var _0x59d24d=buildContextLines(_0x5adc54),_0x12d9d8=_0x59d24d[_0x4934c5(0x2d1)]?_0x49a9f7[_0x4934c5(0x196)](_0x49a9f7['CVCfG'](_0x49a9f7['KjPYv'],_0x59d24d[_0x4934c5(0x277)]('\x0a')),'\x0a\x0a'):'',_0xa51bb9=_0x49a9f7[_0x4934c5(0x170)];return _0x49a9f7[_0x4934c5(0x2e0)](_0xa51bb9+_0x12d9d8,_0x49a9f7[_0x4934c5(0x20e)])+_0x5adc54;}function buildRefinePrompt(_0x190766,_0x903832){const _0x121b6c=_0x1bc161,_0x11211d={'ZycZW':function(_0x59ff39,_0x5e55ff){return _0x59ff39(_0x5e55ff);},'iVkoh':function(_0xa2a3fd,_0x9890ca){return _0xa2a3fd+_0x9890ca;},'ijOSE':_0x121b6c(0x24c)};var _0x3212dc=_0x11211d[_0x121b6c(0x163)](buildContextLines,_0x903832),_0x10cbf1=_0x3212dc[_0x121b6c(0x2d1)]?_0x11211d[_0x121b6c(0x1bb)](_0x11211d['ijOSE'],_0x3212dc[_0x121b6c(0x277)]('\x0a'))+'\x0a\x0a':'';return _0x10cbf1+_0x190766[_0x121b6c(0x1ed)]('{text}',_0x903832);}function selectMode(_0x1cb0b3){const _0x3f2448=_0x1bc161,_0x3cfc99={'oSAXl':_0x3f2448(0x17b),'RXNxy':_0x3f2448(0x155),'ivRsC':_0x3f2448(0x256),'RHMeB':_0x3f2448(0x28a),'wptXN':'assistant-modal','JZhsD':_0x3f2448(0x19a),'fCZey':_0x3f2448(0x1b6),'nUBmn':_0x3f2448(0x2e7),'fJXRa':_0x3f2448(0x19e),'jIbyR':function(_0x39dce7,_0x1c0a5d){return _0x39dce7===_0x1c0a5d;},'fDrLb':'chat','ftytq':_0x3f2448(0x219),'yLrXg':_0x3f2448(0x142),'lhaXh':'Ketik\x20pesan...','weLsP':function(_0x2a5b60,_0x3ffb3e){return _0x2a5b60===_0x3ffb3e;},'EJxUY':function(_0x54b8a6,_0x4feddd,_0x1e709e){return _0x54b8a6(_0x4feddd,_0x1e709e);},'vwEHF':'bot','brkZU':_0x3f2448(0x2be),'Hqyul':function(_0x7c063,_0x6777f7){return _0x7c063(_0x6777f7);},'qOXyX':_0x3f2448(0x2e1),'RaYZH':_0x3f2448(0x2db),'yDLnW':'idle','kgFmN':_0x3f2448(0x214),'suibs':function(_0x28ff57){return _0x28ff57();},'viGLU':_0x3f2448(0x183),'bnJTK':'0|9|1|7|4|10|3|2|12|5|8|11|6','TIPit':function(_0x1538b1,_0x386096){return _0x1538b1!==_0x386096;}};currentMode=_0x1cb0b3,document[_0x3f2448(0x2f1)](_0x3cfc99[_0x3f2448(0x2a5)])[_0x3f2448(0x25a)]['add'](_0x3f2448(0x142)),document[_0x3f2448(0x2f1)](_0x3cfc99[_0x3f2448(0x206)])[_0x3f2448(0x25a)][_0x3f2448(0x27d)](_0x3f2448(0x142)),document[_0x3f2448(0x2f1)](_0x3cfc99[_0x3f2448(0x1c7)])[_0x3f2448(0x25a)][_0x3f2448(0x27d)](_0x3f2448(0x142)),document[_0x3f2448(0x2f1)](_0x3cfc99[_0x3f2448(0x14d)])[_0x3f2448(0x25a)][_0x3f2448(0x27d)]('hidden');const _0x142250=document[_0x3f2448(0x2f1)](_0x3cfc99['wptXN']);_0x142250['classList'][_0x3f2448(0x27d)](_0x3cfc99['JZhsD'],_0x3f2448(0x222),_0x3cfc99[_0x3f2448(0x27a)]);const _0x3b7e04=document[_0x3f2448(0x2f1)](_0x3cfc99[_0x3f2448(0x217)]),_0x40d6a2=document[_0x3f2448(0x2f1)](_0x3cfc99[_0x3f2448(0x156)]);if(_0x3cfc99[_0x3f2448(0x173)](_0x1cb0b3,_0x3cfc99[_0x3f2448(0x2cd)])){const _0x573e6b=_0x3cfc99[_0x3f2448(0x1c8)]['split']('|');let _0x53ba1c=-0x8f9*0x1+-0x1*-0x199d+-0x10a4;while(!![]){switch(_0x573e6b[_0x53ba1c++]){case'0':document[_0x3f2448(0x2f1)](_0x3f2448(0x155))[_0x3f2448(0x25a)][_0x3f2448(0x27d)](_0x3cfc99[_0x3f2448(0x2a7)]);continue;case'1':_0x3b7e04[_0x3f2448(0x25a)][_0x3f2448(0x27d)](_0x3f2448(0x142));continue;case'2':chatImageBtn[_0x3f2448(0x25a)][_0x3f2448(0x27d)](_0x3cfc99[_0x3f2448(0x2a7)]);continue;case'3':chatInput[_0x3f2448(0x1f8)]=_0x3cfc99[_0x3f2448(0x172)];continue;case'4':_0x3cfc99['weLsP'](_0x3b7e04[_0x3f2448(0x1a3)][_0x3f2448(0x14b)](),'')&&_0x3cfc99[_0x3f2448(0x2bd)](appendMessage,_0x3cfc99[_0x3f2448(0x1bf)],_0x3cfc99[_0x3f2448(0x247)]);continue;case'5':chatSendBtn[_0x3f2448(0x25a)][_0x3f2448(0x27d)](_0x3cfc99[_0x3f2448(0x2a7)]);continue;case'6':_0x142250[_0x3f2448(0x25a)][_0x3f2448(0x207)](_0x3cfc99['JZhsD']);continue;case'7':chatFileInput['disabled']=![];continue;case'8':_0x3cfc99['Hqyul'](setVoiceSpeaking,![]);continue;case'9':document[_0x3f2448(0x2f1)](_0x3cfc99[_0x3f2448(0x1c7)])[_0x3f2448(0x25a)][_0x3f2448(0x27d)](_0x3cfc99[_0x3f2448(0x2a7)]);continue;case'10':_0x40d6a2['classList'][_0x3f2448(0x207)](_0x3cfc99['yLrXg']);continue;case'11':if(voiceUi)voiceUi['classList'][_0x3f2448(0x207)](_0x3f2448(0x142));continue;case'12':chatInput[_0x3f2448(0x1c5)]=![];continue;}break;}}else{if(_0x3cfc99[_0x3f2448(0x173)](_0x1cb0b3,_0x3cfc99['qOXyX'])){const _0x58b165=_0x3cfc99[_0x3f2448(0x233)][_0x3f2448(0x17e)]('|');let _0x3f75f2=0x172d+-0x15be+-0x16f;while(!![]){switch(_0x58b165[_0x3f75f2++]){case'0':setVoiceStatus(_0x3cfc99[_0x3f2448(0x1dc)],_0x3cfc99[_0x3f2448(0x230)]);continue;case'1':document[_0x3f2448(0x2f1)]('chat-messages-container')['classList'][_0x3f2448(0x207)](_0x3cfc99[_0x3f2448(0x2a7)]);continue;case'2':chatSendBtn['classList'][_0x3f2448(0x207)](_0x3cfc99[_0x3f2448(0x2a7)]);continue;case'3':chatFileInput['disabled']=!![];continue;case'4':setupVoiceRecognition();continue;case'5':_0x3cfc99[_0x3f2448(0x1eb)](clearChatImage);continue;case'6':chatInput['readOnly']=!![];continue;case'7':if(voiceUi)voiceUi[_0x3f2448(0x25a)][_0x3f2448(0x27d)]('hidden');continue;case'8':chatImageBtn[_0x3f2448(0x25a)][_0x3f2448(0x207)](_0x3cfc99[_0x3f2448(0x2a7)]);continue;case'9':chatInput[_0x3f2448(0x1f8)]=_0x3cfc99[_0x3f2448(0x300)];continue;case'10':_0x3b7e04[_0x3f2448(0x25a)]['add'](_0x3cfc99['yLrXg']);continue;case'11':_0x40d6a2[_0x3f2448(0x25a)][_0x3f2448(0x207)](_0x3cfc99[_0x3f2448(0x2a7)]);continue;case'12':document[_0x3f2448(0x2f1)](_0x3f2448(0x256))[_0x3f2448(0x25a)][_0x3f2448(0x207)](_0x3cfc99[_0x3f2448(0x2a7)]);continue;case'13':_0x142250[_0x3f2448(0x25a)][_0x3f2448(0x207)](_0x3f2448(0x1b6));continue;}break;}}else{const _0x59712c=_0x3cfc99[_0x3f2448(0x1fe)][_0x3f2448(0x17e)]('|');let _0x196a5e=0x1*-0x10fa+-0x257c+0x2*0x1b3b;while(!![]){switch(_0x59712c[_0x196a5e++]){case'0':_0x142250[_0x3f2448(0x25a)][_0x3f2448(0x207)](_0x3f2448(0x222));continue;case'1':_0x3b7e04[_0x3f2448(0x25a)][_0x3f2448(0x207)](_0x3cfc99['yLrXg']);continue;case'2':chatInput['placeholder']=_0x3f2448(0x258);continue;case'3':chatInput['readOnly']=![];continue;case'4':document[_0x3f2448(0x2f1)](_0x3cfc99['RXNxy'])[_0x3f2448(0x25a)]['remove'](_0x3cfc99[_0x3f2448(0x2a7)]);continue;case'5':chatImageBtn[_0x3f2448(0x25a)]['remove'](_0x3f2448(0x142));continue;case'6':setVoiceSpeaking(![]);continue;case'7':if(voiceUi)voiceUi[_0x3f2448(0x25a)][_0x3f2448(0x207)](_0x3f2448(0x142));continue;case'8':chatFileInput['disabled']=![];continue;case'9':_0x40d6a2[_0x3f2448(0x25a)][_0x3f2448(0x27d)](_0x3cfc99[_0x3f2448(0x2a7)]);continue;case'10':document[_0x3f2448(0x2f1)](_0x3cfc99[_0x3f2448(0x1c7)])['classList'][_0x3f2448(0x27d)](_0x3cfc99['yLrXg']);continue;case'11':_0x3cfc99[_0x3f2448(0x173)](_0x40d6a2[_0x3f2448(0x1a3)][_0x3f2448(0x14b)](),'')&&_0x3cfc99[_0x3f2448(0x2bd)](appendMessage,_0x3cfc99[_0x3f2448(0x1bf)],_0x3f2448(0x18e));continue;case'12':chatSendBtn[_0x3f2448(0x25a)]['remove'](_0x3f2448(0x142));continue;}break;}}}_0x3cfc99['TIPit'](_0x1cb0b3,_0x3cfc99['qOXyX'])&&chatInput[_0x3f2448(0x31a)](),chatContainer[_0x3f2448(0x1e3)]=chatContainer[_0x3f2448(0x1ba)];}function switchMode(){const _0x100935=_0x1bc161,_0x230b78={'TCqqo':_0x100935(0x155),'DeAPA':_0x100935(0x142),'XQGXs':_0x100935(0x256),'IHVgT':'mode-chat-theme','ZMNlJ':_0x100935(0x222),'mMiEr':'mode-voice-theme','gvQvM':function(_0x5bb18e,_0x3e9326){return _0x5bb18e(_0x3e9326);},'pWudT':function(_0x5e9ce9,_0x57a583,_0x50e23d){return _0x5e9ce9(_0x57a583,_0x50e23d);},'ovaXC':'idle','AtZsr':'Tekan\x20mic\x20untuk\x20mulai'};currentMode=null,document[_0x100935(0x2f1)]('mode-selection')['classList'][_0x100935(0x27d)](_0x100935(0x142)),document[_0x100935(0x2f1)](_0x230b78[_0x100935(0x18a)])[_0x100935(0x25a)][_0x100935(0x207)](_0x230b78['DeAPA']),document[_0x100935(0x2f1)](_0x230b78[_0x100935(0x16a)])[_0x100935(0x25a)][_0x100935(0x207)](_0x230b78[_0x100935(0x2b4)]),document[_0x100935(0x2f1)](_0x100935(0x28a))[_0x100935(0x25a)]['add'](_0x100935(0x142));if(voiceUi)voiceUi['classList'][_0x100935(0x207)](_0x230b78[_0x100935(0x2b4)]);const _0x413077=document[_0x100935(0x2f1)](_0x100935(0x2dd));_0x413077[_0x100935(0x25a)][_0x100935(0x27d)](_0x230b78['IHVgT'],_0x230b78[_0x100935(0x1ff)],_0x230b78[_0x100935(0x158)]),stopVoiceRecognition(),_0x230b78['gvQvM'](setVoiceSpeaking,![]),_0x230b78[_0x100935(0x259)](setVoiceStatus,_0x230b78[_0x100935(0x2c9)],_0x230b78[_0x100935(0x182)]);}function openAssistantModal(){const _0x478883=_0x1bc161,_0x5350f6={'wqYdt':'assistant-modal','guYjr':_0x478883(0x2e1)};window[_0x478883(0x2e3)](_0x5350f6[_0x478883(0x1b7)]),chatContainer[_0x478883(0x1e3)]=chatContainer[_0x478883(0x1ba)],currentMode!==_0x5350f6[_0x478883(0x2ba)]&&chatInput['focus']();}function closeAssistantModal(){const _0x30d7e3=_0x1bc161,_0x20ab65={'JcCcz':function(_0x324ff){return _0x324ff();},'oHzTn':function(_0x53f4e1,_0x5c0c1d){return _0x53f4e1(_0x5c0c1d);},'UzrEm':function(_0x397a70,_0x448d79,_0x455fef){return _0x397a70(_0x448d79,_0x455fef);},'ubuwL':_0x30d7e3(0x275),'qmlVR':_0x30d7e3(0x214),'Itddu':_0x30d7e3(0x2dd)};_0x20ab65[_0x30d7e3(0x2e2)](stopVoiceRecognition),_0x20ab65[_0x30d7e3(0x200)](setVoiceSpeaking,![]),_0x20ab65[_0x30d7e3(0x1f5)](setVoiceStatus,_0x20ab65[_0x30d7e3(0x157)],_0x20ab65['qmlVR']),window[_0x30d7e3(0x1cf)](_0x20ab65[_0x30d7e3(0x251)]);}window[_0x1bc161(0x281)]=openAssistantModal,window[_0x1bc161(0x286)]=closeAssistantModal,window[_0x1bc161(0x24f)]=selectMode,window[_0x1bc161(0x27c)]=switchMode,window[_0x1bc161(0x199)]=sendChatMessage,chatInput[_0x1bc161(0x184)]('input',function(){const _0x92e87=_0x1bc161,_0x38a810={'HUPBS':_0x92e87(0x205),'XLdGG':function(_0x235fe9,_0x19f491){return _0x235fe9+_0x19f491;}};this['style'][_0x92e87(0x2f0)]=_0x38a810['HUPBS'],this[_0x92e87(0x226)][_0x92e87(0x2f0)]=_0x38a810[_0x92e87(0x220)](this[_0x92e87(0x1ba)],'px');if(this[_0x92e87(0x164)]==='')this[_0x92e87(0x226)][_0x92e87(0x2f0)]=_0x38a810['HUPBS'];}),chatInput[_0x1bc161(0x184)](_0x1bc161(0x244),function(_0x1511b3){const _0x31234a=_0x1bc161,_0x59929f={'QMDnj':function(_0x20d386,_0x210441){return _0x20d386===_0x210441;},'tWiXP':'Enter','dGXbW':function(_0x1b98ad,_0x51d6dc){return _0x1b98ad===_0x51d6dc;},'gJfNv':function(_0x37fabb){return _0x37fabb();}};if(_0x59929f[_0x31234a(0x2f9)](_0x1511b3[_0x31234a(0x254)],_0x59929f[_0x31234a(0x1e4)])&&!_0x1511b3[_0x31234a(0x208)]){if(_0x59929f[_0x31234a(0x19d)](currentMode,_0x31234a(0x2e1)))return;_0x1511b3[_0x31234a(0x283)](),_0x59929f[_0x31234a(0x153)](sendChatMessage);}}),chatFileInput[_0x1bc161(0x184)]('change',function(){const _0xccbc0b=_0x1bc161,_0x3be9d7={'cgjXW':_0xccbc0b(0x142)},_0x3fc32d=this[_0xccbc0b(0x30b)][0xc69+-0x1*-0x1d50+-0x29b9];if(_0x3fc32d){currentChatImage=_0x3fc32d;const _0x35ebf5=new FileReader();_0x35ebf5['onload']=function(_0x5936e3){const _0x1673d4=_0xccbc0b;chatImagePreview[_0x1673d4(0x2fc)]=_0x5936e3[_0x1673d4(0x1d7)]['result'],chatImagePreviewContainer[_0x1673d4(0x25a)][_0x1673d4(0x27d)](_0x3be9d7['cgjXW']);},_0x35ebf5[_0xccbc0b(0x2de)](_0x3fc32d);}});function clearChatImage(){const _0x1d85fd=_0x1bc161,_0x12fb46={'dKbxG':_0x1d85fd(0x142)};currentChatImage=null,chatFileInput[_0x1d85fd(0x164)]='',chatImagePreview[_0x1d85fd(0x2fc)]='',chatImagePreviewContainer['classList'][_0x1d85fd(0x207)](_0x12fb46[_0x1d85fd(0x1d2)]);}function parseMarkdown(_0x4a5323){const _0x91f841=_0x1bc161,_0x11bbb7={'KkFFK':'<code>$1</code>','HQIAf':_0x91f841(0x282),'Omnxx':'<em>$1</em>','uKnYC':_0x91f841(0x1d4)};if(!_0x4a5323)return'';let _0x1575a5=_0x4a5323[_0x91f841(0x1ed)](/```([\s\S]*?)```/g,'<pre><code>$1</code></pre>')['replace'](/`([^`]+)`/g,_0x11bbb7[_0x91f841(0x21b)])[_0x91f841(0x1ed)](/\*\*(.*?)\*\*/g,_0x11bbb7['HQIAf'])[_0x91f841(0x1ed)](/\*(.*?)\*/g,_0x11bbb7[_0x91f841(0x19f)])[_0x91f841(0x1ed)](/(?:^|\n)- (.*)/g,_0x11bbb7[_0x91f841(0x30a)])['replace'](/\n/g,_0x91f841(0x28f));return _0x1575a5;}function appendMessage(_0x499201,_0x51f34f,_0x385dd0=null){const _0x4ba681=_0x1bc161,_0x590296={'rrqgo':_0x4ba681(0x1b1),'STQlf':function(_0x3a55a4,_0x46a939){return _0x3a55a4===_0x46a939;},'bFCNO':function(_0x3ba17d,_0x58c709){return _0x3ba17d(_0x58c709);},'hErnb':_0x4ba681(0x28f),'PFHsS':function(_0x59e7ab,_0x2dd94a){return _0x59e7ab(_0x2dd94a);},'kyqaw':_0x4ba681(0x210),'qTCZY':function(_0x419fc4,_0x4aa2bd){return _0x419fc4===_0x4aa2bd;},'gBJtW':'bot','RbLIz':_0x4ba681(0x2f8),'OVdsf':function(_0x4e415c,_0x4bfba2){return _0x4e415c===_0x4bfba2;},'cqeoc':function(_0x4463d7,_0x1a597e){return _0x4463d7!==_0x1a597e;},'jAhVy':_0x4ba681(0x2e1),'LBioP':function(_0x460765,_0x689847){return _0x460765===_0x689847;},'Yjgej':'chat-messages-image','KSNMT':_0x4ba681(0x2e7),'JGvEd':'user','siQGo':function(_0x4e2c81,_0x2a6bbf,_0x1367fe){return _0x4e2c81(_0x2a6bbf,_0x1367fe);}},_0x372eda=document['createElement'](_0x590296[_0x4ba681(0x213)]);_0x372eda[_0x4ba681(0x2ef)]=_0x4ba681(0x2bb)+_0x499201;let _0x44760d=_0x590296[_0x4ba681(0x303)](_0x499201,_0x4ba681(0x1ea))?_0x590296[_0x4ba681(0x151)](parseMarkdown,_0x51f34f):_0x51f34f[_0x4ba681(0x1ed)](/\n/g,_0x590296['hErnb']);if(_0x385dd0){const _0x466bce=_0x590296[_0x4ba681(0x25e)](String,_0x385dd0),_0x496791=_0x466bce[_0x4ba681(0x1ed)](/"/g,_0x590296[_0x4ba681(0x267)]),_0x57bbdf=_0x466bce['replace'](/'/g,'\x5c\x27');if(_0x590296['qTCZY'](_0x499201,_0x590296['gBJtW'])&&_0x590296[_0x4ba681(0x15e)](currentMode,_0x590296[_0x4ba681(0x25f)])){const _0x200cc9=_0x4ba681(0x305)+Date['now']()+_0x4ba681(0x2f5);_0x44760d+='\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22position:\x20relative;\x20display:\x20inline-block;\x20margin-top:\x208px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22'+_0x496791+_0x4ba681(0x2c0)+_0x57bbdf+_0x4ba681(0x25c)+_0x496791+_0x4ba681(0x2e4)+_0x200cc9+'\x22\x20style=\x22position:\x20absolute;\x20bottom:\x208px;\x20right:\x208px;\x20width:\x2032px;\x20height:\x2032px;\x20border-radius:\x20999px;\x20background:\x20rgba(0,0,0,0.6);\x20color:\x20white;\x20display:\x20inline-flex;\x20align-items:\x20center;\x20justify-content:\x20center;\x20text-decoration:\x20none;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22fas\x20fa-download\x22\x20style=\x22font-size:\x200.85rem;\x22></i>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20';}else _0x44760d+=_0x4ba681(0x1a1)+_0x496791+_0x4ba681(0x2c0)+_0x57bbdf+_0x4ba681(0x2a9);}_0x590296['OVdsf'](_0x499201,_0x590296['gBJtW'])&&_0x590296[_0x4ba681(0x26e)](currentMode,_0x590296[_0x4ba681(0x149)])&&(aiResponseAudio[_0x4ba681(0x2d0)]=-0x15*-0x151+0x5c9*0x1+-0x30a*0xb,aiResponseAudio[_0x4ba681(0x30d)]()['catch'](_0x2da942=>console[_0x4ba681(0x1a4)]('Audio\x20play\x20blocked:',_0x2da942)));_0x372eda['innerHTML']='<div\x20class=\x22message-content\x22>'+_0x44760d+'</div>';const _0x375e7a=_0x590296[_0x4ba681(0x176)](currentMode,_0x4ba681(0x2f8))?_0x590296[_0x4ba681(0x21f)]:_0x590296['KSNMT'],_0x2ff197=document[_0x4ba681(0x2f1)](_0x375e7a);_0x2ff197&&_0x2ff197[_0x4ba681(0x285)](_0x372eda),chatContainer[_0x4ba681(0x1e3)]=chatContainer[_0x4ba681(0x1ba)],(_0x590296[_0x4ba681(0x303)](_0x499201,_0x590296[_0x4ba681(0x23e)])||_0x590296[_0x4ba681(0x303)](_0x499201,_0x590296[_0x4ba681(0x1db)]))&&_0x590296['siQGo'](addChatHistory,_0x590296[_0x4ba681(0x176)](_0x499201,_0x590296['JGvEd'])?_0x590296[_0x4ba681(0x23e)]:_0x4ba681(0x17c),_0x51f34f);}function showTypingIndicator(_0x5a53d6=null){const _0x4189bf=_0x1bc161,_0x5ba51b={'EPTby':function(_0x44dd4e,_0x15f3e1){return _0x44dd4e+_0x15f3e1;},'wVqfP':_0x4189bf(0x1c0),'LOcIh':'div','FSHZk':_0x4189bf(0x2f8),'SMEcd':_0x4189bf(0x19e),'tzeJw':'chat-messages-chat'},_0x57ea5d=_0x5ba51b['EPTby'](_0x5ba51b[_0x4189bf(0x201)],Date[_0x4189bf(0x1a7)]()),_0x3e2245=document['createElement'](_0x5ba51b[_0x4189bf(0x1be)]);_0x3e2245[_0x4189bf(0x2ef)]=_0x4189bf(0x22c),_0x3e2245['id']=_0x57ea5d;let _0x3648ae='';_0x5a53d6?_0x3648ae=_0x4189bf(0x150)+_0x5a53d6+_0x4189bf(0x2f2):_0x3648ae='<div\x20class=\x22typing-indicator\x22><span></span><span></span><span></span></div>';_0x3e2245[_0x4189bf(0x1a3)]=_0x4189bf(0x18b)+_0x3648ae+_0x4189bf(0x2ac);const _0x11aea1=currentMode===_0x5ba51b[_0x4189bf(0x198)]?_0x5ba51b[_0x4189bf(0x1fb)]:_0x5ba51b['tzeJw'],_0x174b67=document[_0x4189bf(0x2f1)](_0x11aea1);return _0x174b67&&_0x174b67[_0x4189bf(0x285)](_0x3e2245),chatContainer['scrollTop']=chatContainer[_0x4189bf(0x1ba)],_0x57ea5d;}function updateTypingIndicator(_0x518255,_0xd38a66){const _0x355302=_0x1bc161,_0x53386e={'xLYHB':'.message-content'},_0x26e208=document[_0x355302(0x2f1)](_0x518255);if(_0x26e208){const _0x4ce174=_0x26e208[_0x355302(0x2b5)](_0x53386e[_0x355302(0x318)]);_0x4ce174&&(_0x4ce174[_0x355302(0x1a3)]=_0x355302(0x150)+_0xd38a66+_0x355302(0x2f2));}}function _0x4d12(_0x5ad514,_0x2970c2){_0x5ad514=_0x5ad514-(0x259*-0x3+-0x150a+0x1d*0x103);const _0x397418=_0x478c();let _0x438ad4=_0x397418[_0x5ad514];return _0x438ad4;}function removeTypingIndicator(_0x16f877){const _0x480bf6=_0x1bc161,_0xbea1d5=document[_0x480bf6(0x2f1)](_0x16f877);if(_0xbea1d5)_0xbea1d5[_0x480bf6(0x27d)]();}function wait(_0x23577a){return new Promise(_0x40fc6d=>setTimeout(_0x40fc6d,_0x23577a));}async function showAnsweredStatus(_0x21c5ae){const _0x39c26a=_0x1bc161,_0x4a3d57={'kTCVb':function(_0x5e7eb3,_0x20d6b3,_0x5e9899){return _0x5e7eb3(_0x20d6b3,_0x5e9899);},'Wenca':_0x39c26a(0x1e9),'BWCyo':function(_0x42268a,_0x538136){return _0x42268a(_0x538136);}};if(!_0x21c5ae)return;_0x4a3d57[_0x39c26a(0x292)](updateTypingIndicator,_0x21c5ae,_0x4a3d57['Wenca']),await wait(0x85*0x43+-0x16c5+-0x94e),_0x4a3d57[_0x39c26a(0x293)](removeTypingIndicator,_0x21c5ae);}function setInputState(_0xc48433){const _0x5740ca=_0x1bc161,_0x51e381={'TJtXO':_0x5740ca(0x1d9)};chatInput['disabled']=_0xc48433,chatSendBtn[_0x5740ca(0x250)]=_0xc48433,chatFileInput[_0x5740ca(0x250)]=_0xc48433;if(voiceMicBtn)voiceMicBtn[_0x5740ca(0x250)]=_0xc48433;_0xc48433?(chatInput[_0x5740ca(0x255)][_0x5740ca(0x226)][_0x5740ca(0x29a)]=_0x51e381[_0x5740ca(0x2b9)],chatSendBtn['style'][_0x5740ca(0x29a)]=_0x51e381[_0x5740ca(0x2b9)]):(chatInput[_0x5740ca(0x255)][_0x5740ca(0x226)][_0x5740ca(0x29a)]='1',chatSendBtn['style'][_0x5740ca(0x29a)]='1',chatInput[_0x5740ca(0x31a)]());}function setupVoiceRecognition(){const _0x46fcbd=_0x1bc161,_0x551578={'hQEzd':function(_0x585c92,_0x541ade){return _0x585c92(_0x541ade);},'XmLGS':function(_0x287981,_0x350ecc){return _0x287981(_0x350ecc);},'Iuygg':function(_0xf8347f,_0x15d4b3,_0x5e1fb0){return _0xf8347f(_0x15d4b3,_0x5e1fb0);},'gaNCC':_0x46fcbd(0x1ea),'ledSi':_0x46fcbd(0x29e),'XDsGJ':function(_0x1e6b35){return _0x1e6b35();},'UfcMb':function(_0x5b095b,_0x5c0e22,_0x42f699){return _0x5b095b(_0x5c0e22,_0x42f699);},'UemFQ':_0x46fcbd(0x1f7)};if(voiceRecognizer)return;const _0x1e9c3f=window['SpeechRecognition']||window[_0x46fcbd(0x212)];if(!_0x1e9c3f){_0x551578['UfcMb'](appendMessage,_0x551578['gaNCC'],_0x551578[_0x46fcbd(0x1ab)]);if(voiceMicBtn)voiceMicBtn['disabled']=!![];return;}voiceRecognizer=new _0x1e9c3f(),voiceRecognizer[_0x46fcbd(0x15f)]=_0x46fcbd(0x218),voiceRecognizer[_0x46fcbd(0x1ec)]=![],voiceRecognizer['continuous']=![],voiceRecognizer['onstart']=function(){const _0x33f7b5=_0x46fcbd;isVoiceStarting=![],_0x551578[_0x33f7b5(0x27b)](setVoiceListening,!![]);},voiceRecognizer['onend']=function(){const _0x4955ea=_0x46fcbd;isVoiceStarting=![],_0x551578[_0x4955ea(0x204)](setVoiceListening,![]);},voiceRecognizer[_0x46fcbd(0x2d3)]=function(){const _0x1a9a7d=_0x46fcbd;isVoiceStarting=![],setVoiceListening(![]),_0x551578[_0x1a9a7d(0x15d)](appendMessage,_0x551578['gaNCC'],_0x551578[_0x1a9a7d(0x1d8)]);},voiceRecognizer[_0x46fcbd(0x2bf)]=function(_0x432ef2){const _0x5da473=_0x46fcbd,_0x59258e=_0x432ef2[_0x5da473(0x161)]&&_0x432ef2[_0x5da473(0x161)][0x4c3+0x1b60+0x1*-0x2023]&&_0x432ef2[_0x5da473(0x161)][-0x1*0x23a7+0x2465+-0x1*0xbe][0x842+-0x2dd*0x1+0x1*-0x565],_0x4f7ed0=_0x59258e?_0x59258e['transcript'][_0x5da473(0x14b)]():'';_0x4f7ed0&&(_0x551578[_0x5da473(0x19c)](stopVoiceRecognition),chatInput[_0x5da473(0x164)]=_0x4f7ed0,_0x551578[_0x5da473(0x204)](sendVoiceMessage,_0x4f7ed0));};}function setVoiceListening(_0x24552a){const _0xb1da21=_0x1bc161,_0x36bcbe={'GFraq':_0xb1da21(0x1a9),'mxZXQ':_0xb1da21(0x1b5)};isVoiceListening=_0x24552a;voiceOrb&&(_0x24552a?voiceOrb['classList'][_0xb1da21(0x207)](_0x36bcbe[_0xb1da21(0x29d)]):voiceOrb['classList'][_0xb1da21(0x27d)](_0x36bcbe[_0xb1da21(0x29d)]));if(!voiceMicBtn)return;const _0xb10459=voiceMicBtn['querySelector']('i');_0xb10459&&(_0xb10459[_0xb1da21(0x2ef)]=_0x24552a?_0xb1da21(0x146):_0x36bcbe[_0xb1da21(0x2a4)]);}function setVoiceStatus(_0x3ce6cb,_0x5527e2){const _0x5df329=_0x1bc161,_0x49234f={'GGVBR':'voice','nAOcO':'is-thinking','eSzKr':_0x5df329(0x1e2),'jVXRv':_0x5df329(0x1ef),'MwHSU':_0x5df329(0x235),'BXFUX':_0x5df329(0x2eb),'ihlwV':_0x5df329(0x1b5),'Wjtlc':function(_0x4f1a32,_0x521ab0){return _0x4f1a32===_0x521ab0;},'QBOFX':_0x5df329(0x237),'dOAFD':function(_0x399078,_0x28676c){return _0x399078===_0x28676c;},'LZBwW':'starting','ChAGA':_0x5df329(0x314),'YHRNv':function(_0x530eed,_0x526b0d){return _0x530eed===_0x526b0d;},'TZtsE':_0x5df329(0x159),'ovcwb':_0x5df329(0x162)};if(!voiceStatus||!voiceStatusText||!voiceStatusIcon)return;if(currentMode!==_0x49234f[_0x5df329(0x2ff)])return;const _0x2f0261=[_0x5df329(0x2eb),_0x49234f[_0x5df329(0x2c3)],_0x49234f[_0x5df329(0x20f)],_0x49234f['jVXRv'],_0x49234f[_0x5df329(0x1da)]];voiceStatus[_0x5df329(0x25a)][_0x5df329(0x27d)](..._0x2f0261);const _0x47f8d5=_0x3ce6cb?_0x5df329(0x28c)+_0x3ce6cb:_0x49234f[_0x5df329(0x16c)];voiceStatus['classList'][_0x5df329(0x207)](_0x47f8d5);_0x5527e2&&(voiceStatusText['textContent']=_0x5527e2);let _0x5d5b6b=_0x49234f[_0x5df329(0x2c8)];if(_0x3ce6cb===_0x5df329(0x319))_0x5d5b6b=_0x5df329(0x203);if(_0x49234f[_0x5df329(0x262)](_0x3ce6cb,_0x5df329(0x14a)))_0x5d5b6b=_0x49234f[_0x5df329(0x29b)];if(_0x49234f['dOAFD'](_0x3ce6cb,_0x49234f[_0x5df329(0x29f)]))_0x5d5b6b=_0x49234f['ChAGA'];if(_0x49234f[_0x5df329(0x229)](_0x3ce6cb,_0x49234f[_0x5df329(0x20a)]))_0x5d5b6b=_0x49234f[_0x5df329(0x31b)];voiceStatusIcon[_0x5df329(0x2ef)]='voice-status-icon\x20'+_0x5d5b6b;}function setVoiceSpeaking(_0x4f4e07){const _0x335656=_0x1bc161,_0x3bc3b4={'dIFxa':_0x335656(0x2e1),'rpklG':_0x335656(0x235),'plCoe':function(_0x4b4635,_0x424038){return _0x4b4635||_0x424038;},'BAvAE':'fas\x20fa-volume-up'};if(!voiceOrb)return;if(currentMode!==_0x3bc3b4[_0x335656(0x2a8)]){voiceOrb[_0x335656(0x25a)]['remove'](_0x3bc3b4['rpklG']);return;}_0x4f4e07?voiceOrb[_0x335656(0x25a)][_0x335656(0x207)](_0x3bc3b4[_0x335656(0x1e5)]):voiceOrb[_0x335656(0x25a)][_0x335656(0x27d)](_0x3bc3b4['rpklG']);voiceMicBtn&&(voiceMicBtn[_0x335656(0x250)]=_0x4f4e07);if(_0x3bc3b4[_0x335656(0x15a)](!voiceMicBtn,isVoiceListening))return;const _0x561686=voiceMicBtn[_0x335656(0x2b5)]('i');if(!_0x561686)return;_0x561686['className']=_0x4f4e07?_0x3bc3b4[_0x335656(0x1d0)]:'fas\x20fa-microphone';}function bindTtsEvents(_0x82efd6,_0x39f784,_0x1d8808){const _0x4bccf7=_0x1bc161,_0xc86053={'tLUbX':function(_0x35f6ef,_0x406533){return _0x35f6ef(_0x406533);},'TYxkU':function(_0x45e01f){return _0x45e01f();},'VEhgJ':function(_0x5c925e,_0x41ed49){return _0x5c925e(_0x41ed49);},'qiNGD':'ended','Impex':_0x4bccf7(0x152),'qNGkV':_0x4bccf7(0x271)};if(!_0x82efd6)return;const _0x599c21=function(){const _0x341671=_0x4bccf7;_0xc86053[_0x341671(0x1a6)](setVoiceSpeaking,![]);if(_0x39f784)_0xc86053[_0x341671(0x15c)](_0x39f784);};_0x82efd6['addEventListener'](_0xc86053[_0x4bccf7(0x25d)],_0x599c21),_0x82efd6['addEventListener'](_0xc86053['Impex'],_0x599c21),_0x82efd6[_0x4bccf7(0x184)](_0xc86053['qNGkV'],_0x599c21),_0x82efd6['addEventListener'](_0x4bccf7(0x1df),function(){const _0x273f1e=_0x4bccf7;_0xc86053[_0x273f1e(0x1b4)](setVoiceSpeaking,!![]);if(_0x1d8808)_0xc86053[_0x273f1e(0x15c)](_0x1d8808);});}function stopVoiceRecognition(){const _0x4222c0=_0x1bc161,_0x5f3c19={'vUDvD':function(_0x8d027e,_0x42b159){return _0x8d027e(_0x42b159);}};voiceRecognizer&&isVoiceListening&&voiceRecognizer[_0x4222c0(0x232)](),isVoiceStarting=![],_0x5f3c19[_0x4222c0(0x22b)](setVoiceListening,![]);}voiceMicBtn&&voiceMicBtn['addEventListener'](_0x1bc161(0x2ae),function(){const _0x1cff4c=_0x1bc161,_0x3d1d64={'tmFHd':function(_0x11dc62,_0x2c1d6f,_0x61f678){return _0x11dc62(_0x2c1d6f,_0x61f678);},'ICfSq':_0x1cff4c(0x313)};if(!voiceRecognizer)setupVoiceRecognition();if(!voiceRecognizer)return;if(isVoiceListening)voiceRecognizer[_0x1cff4c(0x232)]();else{if(isVoiceStarting)return;try{isVoiceStarting=!![],_0x3d1d64[_0x1cff4c(0x27e)](setVoiceStatus,_0x1cff4c(0x178),_0x3d1d64[_0x1cff4c(0x28d)]),voiceRecognizer[_0x1cff4c(0x2d2)]();}catch(_0x3aa095){isVoiceStarting=![];}}});function _0x478c(){const _0x3333cf=['querySelector','Detected\x20image\x20ratio:\x20','isArray','haHNQ','TJtXO','guYjr','chat-message\x20','ONjwS','EJxUY','Assalamualaikum!\x20Saya\x20siap\x20menjawab\x20pertanyaan\x20seputar\x20Ramadhan.\x20Apa\x20yang\x20ingin\x20ditanyakan?','onresult','\x22\x20class=\x22chat-image-attachment\x22\x20onclick=\x22window.openImagePreview(\x27','QgYTN','https://','nAOcO','BkCBB','LdKIM','BQEvm','qGyqg','ihlwV','ovaXC','Jvlnf','xdEee','mqrSY','fDrLb','prompt','SuFi\x20menjawab...','currentTime','length','start','onerror','Znsoe','text','pndXo','audio/mpeg','176bNuhqk','imageUrl','qLVkT','13|10|11|7|1|12|6|9|2|8|3|5|0|4','Maaf,\x20suara\x20belum\x20tersedia.','assistant-modal','readAsDataURL','user','Ewjom','voice','JcCcz','showFeaturePage','\x22\x20download=\x22','eUpLv','json','chat-messages-chat','kPFaN','setUint32','test','is-idle','https://cdn.jsdelivr.net/gh/karyawaktuluang/magic.fitri@main/assets/chat.mp3','ioBDD','nFzKI','className','height','getElementById','</span><div\x20class=\x22typing-indicator\x22\x20style=\x22display:inline-flex;\x20margin:0;\x22><span></span><span></span><span></span></div></div>','XCegk','candidates','.png','eWNDT','gygxv','image','QMDnj','chat-image-btn','qMAyK','src','Refine\x20this\x20user\x20request\x20into\x20a\x20high\x20quality\x20image\x20generation\x20prompt\x20(English).\x20User\x20request:\x20\x22{text}\x22.\x20Output\x20ONLY\x20the\x20prompt.','Terjadi\x20kesalahan\x20koneksi.','GGVBR','viGLU','Kgfee','get','STQlf','EunBD','sufi-image-','startsWith','mGPtR','xCDhc','jOrio','uKnYC','files','uXzcY','play','EYMct','abs','RsgZS','chat-image-preview-container','1:1','User\x20menyalakan\x20mikrofon...','fas\x20fa-circle-notch','data:','yOzbJ','Enhance\x20this\x20image','xLYHB','thinking','focus','ovcwb','jSbAJ','match','hidden','JfZcl','zrCQq','BOAum','fas\x20fa-stop','ended','sampleRate','jAhVy','answered','trim','RNdcP','RHMeB','0|4|1|2|3','bZtfP','<div\x20style=\x22display:flex;\x20align-items:center;\x20gap:8px;\x22><span>','bFCNO','error','gJfNv','filter','chat-messages-container','fJXRa','ubuwL','mMiEr','speaking','plCoe','dVxCt','TYxkU','Iuygg','qTCZY','lang','fXfGN','results','fas\x20fa-volume-up','ZycZW','value','kMqjw','audioUrl','ALfRn','Berikut\x20hasil\x20gambarnya:','server/chat.php','XQGXs','User','BXFUX','byNwh','ivtvn','bHSdL','SzcoH','voice-status-icon','lhaXh','jIbyR','YPaRH','createObjectURL','LBioP','kLQsx','starting','mgmkq','NASva','mode-selection','assistant','tMgyG','split','qItXh','wzUXZ','rcVoC','AtZsr','Tekan\x20mic\x20lalu\x20bicara...','addEventListener','revokeObjectURL','WFkOJ','base64','naturalWidth','chat-image-preview','TCqqo','<div\x20class=\x22message-content\x22>','Vokse','no-store','Mode\x20Kreatif\x20Aktif!\x20Silakan\x20tulis\x20deskripsi\x20gambar\x20yang\x20ingin\x20dibuat\x20atau\x20upload\x20foto\x20untuk\x20diedit.','zxBEt','KmvJX','SuFi\x20sedang\x20berfikir...','iCIOA','lktMU','LXqLP','wLTIb','iKrrA','aspectRatio','FSHZk','sendChatMessage','mode-chat-theme','MKueJ','XDsGJ','dGXbW','chat-messages-image','Omnxx','utWrh','<br><img\x20src=\x22','JZeVM','innerHTML','log','MpeLs','tLUbX','now','iBbyd','is-listening','AHEdD','UemFQ','Anda\x20adalah\x20Sufi,\x20asisten\x20AI\x20yang\x20cerdas\x20dan\x20ramah\x20yang\x20dibuat\x20oleh\x20IchsanLabs.\x20Gunakan\x20Bahasa\x20Indonesia\x20yang\x20sopan.\x20Batasi\x20jawaban\x20maksimal\x2050\x20kata.\x20Tidak\x20perlu\x20menjelaskan\x20itu\x20semua\x20kecuali\x20ditanya\x0a\x0a','MdhmW','ImuDo','stringify','audio/wav','div','sdLIV','chat-input','VEhgJ','fas\x20fa-microphone','mode-voice-theme','wqYdt','ioByl','UJiRW','scrollHeight','iVkoh','xHOQZ','UGHTk','LOcIh','vwEHF','typing-','EQAJw','playErrorSound','Mengoptimalkan\x20prompt...','zWJcR','readOnly','Cascd','ivRsC','ftytq','MtDTq','pBFTm','lvrxF','3544010kDVlrf','zcmnf','**Prompt\x20Teroptimasi:**\x0a','closeFeaturePage','BAvAE','instruction','dKbxG','application/json','<br>•\x20$1','mPcxJ','Alxfy','target','ledSi','0.5','MwHSU','gBJtW','yDLnW','EYdTK','xTNmQ','playing','ezsVR','Assistant','is-answered','scrollTop','tWiXP','rpklG','Ykhgq','YTYVL','response','SuFi\x20sudah\x20mendapatkan\x20jawaban...','bot','suibs','interimResults','replace','string','is-starting','cuLul','parse','730rOYHFY','imuNz','CTNHM','UzrEm','playSuccessSound','Browser\x20tidak\x20mendukung\x20fitur\x20mic.\x20Coba\x20gunakan\x20Chrome.','placeholder','parts','JNduc','SMEcd','yhMZG','qwvHn','bnJTK','ZMNlJ','oHzTn','wVqfP','audio','fas\x20fa-brain','XmLGS','auto','RXNxy','add','shiftKey','images[]','TZtsE','**Instruksi\x20Teroptimasi:**\x0a','qpKaN','VIVno','cYANQ','eSzKr','&quot;','ZYTnp','webkitSpeechRecognition','rrqgo','Tekan\x20mic\x20untuk\x20mulai','success','5|1|2|3|4|0','nUBmn','id-ID','6|1|10|11|0|9|12|3|5|2|7|4|8','GCIdU','KkFFK','67887gPlczh','GHYNc','Maaf,\x20saya\x20sedang\x20gangguan.\x20Coba\x20lagi\x20nanti.','Yjgej','XLdGG','voice-status-text','mode-image-theme','iQQNu','7pntWjC','HBDMI','style','audio/','QsGMN','YHRNv','TNLyp','vUDvD','chat-message\x20bot','8148NuqGBV','FoUVS','543372yfEpeB','kgFmN','KDtpV','stop','RaYZH','append','is-speaking','content-type','fas\x20fa-check-circle','564LOicNm','TabtU','uDwPo','ilcqt','sirAj','ycLam','JGvEd','voice-status','includes','POST','OmlNl','toFixed','keydown','GxcDH','audioContent','brkZU','papcR','toLowerCase','push','EgicB','Context\x20percakapan:\x0a','mimeType','KfBhe','selectMode','disabled','Itddu','arrayBuffer','Gagal\x20memproses\x20gambar.\x20Silakan\x20coba\x20lagi.','key','parentElement','input-area','NJfoj','Ketik\x20pesan...','pWudT','classList','GiWxH','\x27)\x22\x20style=\x22cursor:pointer;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x22','qiNGD','PFHsS','RbLIz','object','eQpQN','Wjtlc','map','chat-container','TIXFH','slice','kyqaw','OqxcQ','OsrlP','mMMdh','chat-send-btn','3292120PFkAcA','Sedang\x20memproses\x20gambar...','cqeoc','WPNfT','role','pause','SuFi\x20sedang\x20berbicara...','Ubaem','Sedang\x20membuat\x20gambar...','idle','ATJjS','join','SuFi\x20sedang\x20menyalakan\x20mikrofon...','yGbBc','fCZey','hQEzd','switchMode','remove','tmFHd','yxZTz','setUint16','openAssistantModal','<strong>$1</strong>','preventDefault','LCPkj','appendChild','closeAssistantModal','1201410xexnXj','jZPqJ','RdsxX','switch-mode-btn','CiruA','is-','ICfSq','bJONa','<br>','CzPtw','MFKIw','kTCVb','BWCyo','uNCwI','nRAFA','oyEzs','inlineData','content','hYXLK','opacity','QBOFX','gZMbp','GFraq','Mic\x20bermasalah.\x20Coba\x20izinkan\x20akses\x20mikrofon.','LZBwW','getItem','nWEqw','Riwayat\x20percakapan:\x0a','server/tts.php','mxZXQ','oSAXl','data','yLrXg','dIFxa','\x27)\x22\x20style=\x22cursor:pointer;\x22>','DNLhY','Maaf,\x20saya\x20gagal\x20membuat\x20gambar.\x20Pastikan\x20instruksi\x20jelas\x20atau\x20coba\x20upload\x20gambar\x20referensi.','</div>','setItem','click','vBaGY','headers','charCodeAt','xTlcG','bcCzr','DeAPA'];_0x478c=function(){return _0x3333cf;};return _0x478c();}function playTtsAudio(_0x305005,_0x3614b7,_0x5a01f2){const _0x46ff81=_0x1bc161,_0x19ea87={'qpKaN':_0x46ff81(0x216),'pYOpX':function(_0x4c0e25,_0x10592d,_0x2c7d89,_0x57c24f){return _0x4c0e25(_0x10592d,_0x2c7d89,_0x57c24f);},'NASva':function(_0x4323c4,_0x448d12){return _0x4323c4(_0x448d12);}},_0x405747=_0x19ea87[_0x46ff81(0x20c)][_0x46ff81(0x17e)]('|');let _0x284acd=-0x237d+0xc*-0x1fd+-0x3b59*-0x1;while(!![]){switch(_0x405747[_0x284acd++]){case'0':ttsAudio[_0x46ff81(0x30d)]()['catch'](function(){});continue;case'1':ttsAudio&&(ttsAudio[_0x46ff81(0x271)](),ttsAudio[_0x46ff81(0x2d0)]=-0x14d4+-0x1f52+0x10b*0x32);continue;case'2':ttsAudio=new Audio(_0x305005);continue;case'3':_0x19ea87['pYOpX'](bindTtsEvents,ttsAudio,_0x3614b7,_0x5a01f2);continue;case'4':_0x19ea87[_0x46ff81(0x17a)](setVoiceSpeaking,!![]);continue;case'5':if(!_0x305005)return;continue;}break;}}function playTtsBlob(_0x2b0a1c,_0x5b9516,_0x5ad5bf){const _0x5044be=_0x1bc161,_0x24928a={'jOrio':function(_0x21863d,_0x57052d,_0x19b627,_0x41c3a9){return _0x21863d(_0x57052d,_0x19b627,_0x41c3a9);},'CTNHM':function(_0x1a2e28,_0x551b24){return _0x1a2e28(_0x551b24);},'zrCQq':_0x5044be(0x147),'qLVkT':_0x5044be(0x152)};if(!_0x2b0a1c)return;ttsAudio&&(ttsAudio[_0x5044be(0x271)](),ttsAudio[_0x5044be(0x2d0)]=0x1*-0xddb+-0x713+0x14ee);const _0xcb2072=URL[_0x5044be(0x175)](_0x2b0a1c);ttsAudio=new Audio(_0xcb2072),_0x24928a[_0x5044be(0x309)](bindTtsEvents,ttsAudio,_0x5b9516,_0x5ad5bf),_0x24928a[_0x5044be(0x1f4)](setVoiceSpeaking,!![]);const _0x15c268=function(){const _0x5379de=_0x5044be;URL[_0x5379de(0x185)](_0xcb2072);};ttsAudio['addEventListener'](_0x24928a[_0x5044be(0x144)],_0x15c268),ttsAudio[_0x5044be(0x184)](_0x24928a[_0x5044be(0x2da)],_0x15c268),ttsAudio[_0x5044be(0x30d)]()['catch'](function(){});}function playTtsBase64(_0x8d6624,_0x3a5faa,_0x49b383,_0x22588e){const _0x3d556b=_0x1bc161,_0x142227={'FNsYW':function(_0x160f50,_0xaf8e1c){return _0x160f50(_0xaf8e1c);},'TiJyt':function(_0x5045a3,_0x2494b3){return _0x5045a3<_0x2494b3;},'mqrSY':_0x3d556b(0x2d7),'TKnrW':function(_0x50b4cb,_0x33e783,_0x305555,_0x3c79d8){return _0x50b4cb(_0x33e783,_0x305555,_0x3c79d8);}};if(!_0x8d6624)return;try{const _0x3447bf=_0x142227['FNsYW'](atob,_0x8d6624),_0x230b75=_0x3447bf[_0x3d556b(0x2d1)],_0x39b9a3=new Uint8Array(_0x230b75);for(let _0x19cf20=0x1*0xd99+0x2*0xddb+-0x8d*0x4b;_0x142227['TiJyt'](_0x19cf20,_0x230b75);_0x19cf20++){_0x39b9a3[_0x19cf20]=_0x3447bf[_0x3d556b(0x2b1)](_0x19cf20);}const _0x5cdb2d=new Blob([_0x39b9a3],{'type':_0x3a5faa||_0x142227[_0x3d556b(0x2cc)]});_0x142227['TKnrW'](playTtsBlob,_0x5cdb2d,_0x49b383,_0x22588e);}catch(_0xc5a7f8){}}function isPcmMimeType(_0x4f4281){const _0x1bbdf0=_0x1bc161;if(!_0x4f4281)return![];return/audio\/l16/i['test'](_0x4f4281)||/codec=pcm/i[_0x1bbdf0(0x2ea)](_0x4f4281);}function parsePcmDataUrl(_0x1bcde7){const _0x4e3f77=_0x1bc161,_0x4c4cf6={'gZMbp':function(_0x7e0b40,_0xd72487){return _0x7e0b40!==_0xd72487;},'qItXh':_0x4e3f77(0x1ee),'MdhmW':function(_0x3b0848,_0x29c201){return _0x3b0848(_0x29c201);}};if(!_0x1bcde7||_0x4c4cf6[_0x4e3f77(0x29c)](typeof _0x1bcde7,_0x4c4cf6[_0x4e3f77(0x17f)]))return null;if(!_0x1bcde7[_0x4e3f77(0x306)](_0x4e3f77(0x315)))return null;const _0x250de6=_0x1bcde7[_0x4e3f77(0x17e)](',');if(_0x250de6['length']<-0x214*-0x7+0xa5b*-0x3+0x1087)return null;const _0xfe6770=_0x250de6[-0xcec+-0x1d06*0x1+0x29f2],_0x52142f=_0x250de6[_0x4e3f77(0x266)](0x1cb7+0x15a*0x11+-0x33b0)[_0x4e3f77(0x277)](','),_0x1d58f7=_0xfe6770[_0x4e3f77(0x31d)](/rate=(\d+)/i),_0x507e5a=_0x1d58f7?_0x4c4cf6[_0x4e3f77(0x1ad)](Number,_0x1d58f7[0x1*-0x1207+0xb5*-0x5+-0x1591*-0x1]):-0x8a86+0x31*0x23a+0x7b2c,_0x32dff0=_0xfe6770[_0x4e3f77(0x266)](-0x1710+-0x10*0x1e4+0x11c7*0x3)[_0x4e3f77(0x17e)](';')[-0x5aa+-0x290+0x27*0x36];return{'base64':_0x52142f,'sampleRate':_0x507e5a,'mimeType':_0x32dff0};}function buildWavBlobFromPcm(_0x28b4a2,_0x1e77f4){const _0x52e306=_0x1bc161,_0x34fc9c={'efckU':function(_0x47cbef,_0x2f31f3){return _0x47cbef+_0x2f31f3;},'efADS':function(_0x2f1c5b,_0x4fac03){return _0x2f1c5b||_0x4fac03;},'EYMct':function(_0x349450,_0x1a3986){return _0x349450/_0x1a3986;},'QgYTN':function(_0x4b3c65,_0x5b8c98){return _0x4b3c65*_0x5b8c98;},'NuSlV':function(_0x2676c2,_0x32b5b1,_0x9c5025){return _0x2676c2(_0x32b5b1,_0x9c5025);},'gZWhX':'RIFF','yGbBc':function(_0x1d9ae5,_0x2fd928){return _0x1d9ae5+_0x2fd928;},'cpCTQ':function(_0x2022c6,_0x2c28fe,_0x120c99){return _0x2022c6(_0x2c28fe,_0x120c99);},'Znsoe':'WAVE','kVHmR':'fmt\x20','CzPtw':_0x52e306(0x2a6),'BBlsc':_0x52e306(0x1b0)};if(!_0x28b4a2||!_0x28b4a2[_0x52e306(0x2d1)])return null;const _0xc9945c=_0x34fc9c['efADS'](_0x1e77f4,-0x57d*-0xd+0x9e1*0x3+-0x73c),_0xb9cb6a=-0x158d+0x1*-0x10b1+-0x1*-0x263f,_0x1b104d=-0x2159+0x790+0x19d9,_0x20e4f6=_0x34fc9c[_0x52e306(0x30e)](_0x34fc9c[_0x52e306(0x2c1)](_0xb9cb6a,_0x1b104d),-0x260f+0x18*-0x199+-0x47f*-0x11),_0x228db1=_0xc9945c*_0x20e4f6,_0xb27e31=_0x28b4a2['length'],_0x4476bb=new ArrayBuffer(0x177c+0x2b*0xe3+0x3d71*-0x1),_0x18891a=new DataView(_0x4476bb),_0x584bb7=function(_0x480a04,_0xe6ed9b){const _0x298130=_0x52e306;for(let _0x412efc=-0x1*0x985+0x111+0x874;_0x412efc<_0xe6ed9b['length'];_0x412efc++){_0x18891a['setUint8'](_0x34fc9c['efckU'](_0x480a04,_0x412efc),_0xe6ed9b[_0x298130(0x2b1)](_0x412efc));}};return _0x34fc9c['NuSlV'](_0x584bb7,0x228d+-0x1*0x30b+-0x1f82,_0x34fc9c['gZWhX']),_0x18891a[_0x52e306(0x2e9)](0x1*-0xe8a+0x1fce+-0x1140,_0x34fc9c[_0x52e306(0x279)](0x1399+-0x13*-0x21+-0x15e8,_0xb27e31),!![]),_0x34fc9c['cpCTQ'](_0x584bb7,0x23e+-0x1ad9+0x11*0x173,_0x34fc9c[_0x52e306(0x2d4)]),_0x584bb7(-0x2416+0x4*-0x3d4+0x3372,_0x34fc9c['kVHmR']),_0x18891a[_0x52e306(0x2e9)](-0xc*0x2db+0x13aa+0xeaa,-0xe12+0xa56+-0x9*-0x6c,!![]),_0x18891a[_0x52e306(0x280)](-0x264f+-0x19d7+0x403a,-0x7*0x34a+0x651+0x10b6,!![]),_0x18891a[_0x52e306(0x280)](0x1*0x1eb5+0x195*0x13+0x35f*-0x12,_0xb9cb6a,!![]),_0x18891a[_0x52e306(0x2e9)](-0x1*0x11a7+-0xb01*0x1+0x170*0x14,_0xc9945c,!![]),_0x18891a[_0x52e306(0x2e9)](0x1*0xaac+-0x71+0xa1f*-0x1,_0x228db1,!![]),_0x18891a['setUint16'](0x71*-0x19+-0x13*0x97+0x165e,_0x20e4f6,!![]),_0x18891a['setUint16'](0x51d+-0x1*-0x5fb+-0xaf6,_0x1b104d,!![]),_0x584bb7(0x89b+-0x4e1*0x4+0xb0d,_0x34fc9c[_0x52e306(0x290)]),_0x18891a[_0x52e306(0x2e9)](0x3ba+0x45a*0x4+-0x14fa,_0xb27e31,!![]),new Blob([_0x4476bb,_0x28b4a2],{'type':_0x34fc9c['BBlsc']});}function playPcmBase64AsWav(_0x37857a,_0x4fed59,_0x391351,_0x105781){const _0x506f37=_0x1bc161,_0x273781={'qGyqg':function(_0x361ded,_0x5685b7){return _0x361ded(_0x5685b7);},'lktMU':function(_0x5c2ce3,_0x4cb216){return _0x5c2ce3<_0x4cb216;},'TNLyp':function(_0x787f8,_0x588976,_0xa30cef){return _0x787f8(_0x588976,_0xa30cef);},'Alxfy':function(_0x31fd74,_0x3c306c,_0x4b0780,_0x1ef1bf){return _0x31fd74(_0x3c306c,_0x4b0780,_0x1ef1bf);}};if(!_0x37857a)return;try{const _0x2be249=_0x273781[_0x506f37(0x2c7)](atob,_0x37857a),_0x254b42=_0x2be249['length'],_0x2f5e3f=new Uint8Array(_0x254b42);for(let _0x199391=-0xae4+-0x25+0xb09;_0x273781[_0x506f37(0x193)](_0x199391,_0x254b42);_0x199391++){_0x2f5e3f[_0x199391]=_0x2be249[_0x506f37(0x2b1)](_0x199391);}const _0x5aab07=_0x273781[_0x506f37(0x22a)](buildWavBlobFromPcm,_0x2f5e3f,_0x4fed59);if(_0x5aab07)_0x273781[_0x506f37(0x1d6)](playTtsBlob,_0x5aab07,_0x391351,_0x105781);}catch(_0x159a60){}}function playPcmBufferAsWav(_0xf3774a,_0x1d0312,_0x136478,_0x5e6673){const _0x29fa95=_0x1bc161,_0x3f2241={'papcR':function(_0x1c9a89,_0x155d9d,_0x28a67a){return _0x1c9a89(_0x155d9d,_0x28a67a);},'uNCwI':function(_0x53a4f8,_0x513325,_0x4fec92,_0x1e45c8){return _0x53a4f8(_0x513325,_0x4fec92,_0x1e45c8);}};if(!_0xf3774a)return;const _0x1b799e=new Uint8Array(_0xf3774a),_0x5e719d=_0x3f2241[_0x29fa95(0x248)](buildWavBlobFromPcm,_0x1b799e,_0x1d0312);if(_0x5e719d)_0x3f2241[_0x29fa95(0x294)](playTtsBlob,_0x5e719d,_0x136478,_0x5e6673);}function resolveBaseUrl(_0x42e433){const _0x1d16f7=_0x1bc161,_0x541f25={'GHYNc':function(_0x4f8cbe,_0x47957d){return _0x4f8cbe!==_0x47957d;},'UGHTk':_0x1d16f7(0x1ee)};if(!_0x42e433||_0x541f25[_0x1d16f7(0x21d)](typeof _0x42e433,_0x541f25[_0x1d16f7(0x1bd)]))return'';let _0x41b200=_0x42e433[_0x1d16f7(0x14b)]();if(!_0x41b200)return'';return!/^https?:\/\//i['test'](_0x41b200)&&(_0x41b200=_0x1d16f7(0x2c2)+_0x41b200),_0x41b200['replace'](/\/+$/,'');}async function requestTtsAudio(_0x221ce4){const _0x530c22=_0x1bc161,_0x132288={'cuLul':_0x530c22(0x275),'byNwh':_0x530c22(0x214),'dRKkz':function(_0x8797a9,_0x3bdf5d,_0x43b3c1){return _0x8797a9(_0x3bdf5d,_0x43b3c1);},'qwvHn':_0x530c22(0x159),'JNduc':_0x530c22(0x2cf),'iBbyd':function(_0x1550f3,_0x2a9291,_0x269672){return _0x1550f3(_0x2a9291,_0x269672);},'fXfGN':function(_0x2c34fe,_0x162797,_0x2d8765){return _0x2c34fe(_0x162797,_0x2d8765);},'gygxv':function(_0x4ea017,_0x27f4c0){return _0x4ea017(_0x27f4c0);},'Cascd':function(_0x28119b,_0x427e3f,_0x2d77e0){return _0x28119b(_0x427e3f,_0x2d77e0);},'YTYVL':function(_0x5b4bf4,_0x35cb6f,_0x1de67e){return _0x5b4bf4(_0x35cb6f,_0x1de67e);},'pBFTm':'SuFi\x20sedang\x20berbicara...','kPFaN':function(_0x17b54f,_0x480435,_0x5aaaf0){return _0x17b54f(_0x480435,_0x5aaaf0);},'kMqjw':function(_0x2755a2,_0xecad7b,_0x35066c){return _0x2755a2(_0xecad7b,_0x35066c);},'mPcxJ':function(_0x5a2319,_0xb81732){return _0x5a2319(_0xb81732);},'zxBEt':function(_0x89b853,_0x48a08a,_0x45bc3e){return _0x89b853(_0x48a08a,_0x45bc3e);},'LCPkj':function(_0x1373ae,_0x216842,_0xd094a8){return _0x1373ae(_0x216842,_0xd094a8);},'OqxcQ':function(_0x274a55,_0x4064e5){return _0x274a55(_0x4064e5);},'zcmnf':function(_0x83a74e,_0x2706e4,_0x1e8c04){return _0x83a74e(_0x2706e4,_0x1e8c04);},'MpeLs':function(_0x1965de,_0x4a3767){return _0x1965de(_0x4a3767);},'QsGMN':function(_0x2fe8fb,_0x43bd45,_0xaa9ef9){return _0x2fe8fb(_0x43bd45,_0xaa9ef9);},'GCIdU':function(_0x3cd8c8,_0x5714a0,_0x444cb3){return _0x3cd8c8(_0x5714a0,_0x444cb3);},'qMAyK':function(_0x220dba,_0x1775be,_0x5286ab){return _0x220dba(_0x1775be,_0x5286ab);},'lvrxF':function(_0x4af97e,_0x240fc5,_0x41cd29){return _0x4af97e(_0x240fc5,_0x41cd29);},'bHSdL':function(_0x49ade7,_0x49b531,_0x5a15ce){return _0x49ade7(_0x49b531,_0x5a15ce);},'vBaGY':_0x530c22(0x2a3),'EQAJw':function(_0x49a9a7,_0x1feb0d){return _0x49a9a7===_0x1feb0d;},'ezsVR':_0x530c22(0x2e1),'iQQNu':function(_0x1fdc5d,_0x3e47a0){return _0x1fdc5d(_0x3e47a0);},'KDtpV':_0x530c22(0x278),'wLTIb':_0x530c22(0x178),'Tizmf':'SuFi\x20menyalakan\x20mikrofon...','Ubaem':function(_0x22b733,_0x32649f,_0x3361a3){return _0x22b733(_0x32649f,_0x3361a3);},'MFKIw':_0x530c22(0x1d3),'xTNmQ':'Fenrir','xdEee':function(_0x5e42d4,_0x40edb9){return _0x5e42d4(_0x40edb9);},'yxZTz':function(_0x76f0b5,_0x5393fe,_0x1c1e93){return _0x76f0b5(_0x5393fe,_0x1c1e93);},'oyEzs':_0x530c22(0x1ea),'BkCBB':_0x530c22(0x2dc),'TabtU':_0x530c22(0x236),'BQEvm':'application/octet-stream','YPaRH':function(_0x37ea39,_0x39ec6c,_0x364660){return _0x37ea39(_0x39ec6c,_0x364660);},'yhMZG':function(_0x754126,_0x1dafe6,_0x53d7d9,_0x3da369){return _0x754126(_0x1dafe6,_0x53d7d9,_0x3da369);},'Kgfee':function(_0x2f7cdc,_0x3901f7,_0x17d5a1){return _0x2f7cdc(_0x3901f7,_0x17d5a1);},'UJiRW':function(_0x58a4c1,_0x2d7259,_0x46312e,_0x315996,_0x3e5794){return _0x58a4c1(_0x2d7259,_0x46312e,_0x315996,_0x3e5794);},'sRZpQ':function(_0x20d587,_0x5038f3){return _0x20d587(_0x5038f3);},'bZtfP':function(_0x509113,_0x210c19,_0xb0565e){return _0x509113(_0x210c19,_0xb0565e);},'MKueJ':function(_0x1adcd2,_0x365e24,_0x28b912,_0x57b5b1,_0x35f613){return _0x1adcd2(_0x365e24,_0x28b912,_0x57b5b1,_0x35f613);},'hYXLK':function(_0x146967,_0x15eec3,_0x541f2c){return _0x146967(_0x15eec3,_0x541f2c);},'jSbAJ':function(_0x2d8add,_0x5d0904,_0x14f15d,_0x310203){return _0x2d8add(_0x5d0904,_0x14f15d,_0x310203);},'nWEqw':'audio/mpeg','MVQlS':function(_0x66474a,_0x123b1c,_0x516b78){return _0x66474a(_0x123b1c,_0x516b78);},'bcCzr':function(_0xe42043,_0x5adb8a){return _0xe42043(_0x5adb8a);},'LdKIM':function(_0xed67,_0x5e894c){return _0xed67(_0x5e894c);},'GxcDH':function(_0x13a46a,_0x26155a,_0x5b894d){return _0x13a46a(_0x26155a,_0x5b894d);},'LXqLP':function(_0x27c8c0,_0x4aded6,_0x4f6670,_0x33fd35,_0x540251){return _0x27c8c0(_0x4aded6,_0x4f6670,_0x33fd35,_0x540251);},'dVxCt':function(_0x44df8b,_0x5bc299,_0x385983){return _0x44df8b(_0x5bc299,_0x385983);}};if(!_0x221ce4)return;const _0x2d59ea=_0x132288[_0x530c22(0x2af)],_0x2dcb01=_0x132288[_0x530c22(0x1c1)](currentMode,_0x132288[_0x530c22(0x1e0)]),_0x4bf64c=_0x2dcb01?null:_0x132288[_0x530c22(0x223)](showTypingIndicator,_0x132288[_0x530c22(0x231)]);_0x2dcb01&&_0x132288['fXfGN'](setVoiceStatus,_0x132288[_0x530c22(0x195)],_0x132288['Tizmf']);let _0x27d5df=null;try{_0x27d5df=await _0x132288['Ubaem'](fetch,_0x2d59ea,{'method':'POST','headers':{'Content-Type':_0x132288[_0x530c22(0x291)]},'body':JSON[_0x530c22(0x1af)]({'prompt':_0x221ce4,'voiceName':_0x132288[_0x530c22(0x1de)]})});}catch(_0x22fadf){if(_0x4bf64c)_0x132288[_0x530c22(0x2cb)](removeTypingIndicator,_0x4bf64c);_0x132288[_0x530c22(0x27f)](setVoiceStatus,_0x132288[_0x530c22(0x1f0)],_0x132288['byNwh']),_0x132288[_0x530c22(0x18f)](appendMessage,_0x132288[_0x530c22(0x296)],_0x132288['BkCBB']);return;}const _0x585a73=(_0x27d5df[_0x530c22(0x2b0)][_0x530c22(0x302)](_0x132288[_0x530c22(0x239)])||'')[_0x530c22(0x249)]();if(_0x27d5df['ok']&&(_0x585a73['includes'](_0x530c22(0x227))||_0x585a73[_0x530c22(0x240)](_0x132288[_0x530c22(0x2c6)]))){if(_0x132288[_0x530c22(0x2f7)](isPcmMimeType,_0x585a73)){const _0x378f33=await _0x27d5df[_0x530c22(0x252)](),_0x303d7a=_0x585a73[_0x530c22(0x31d)](/rate=(\d+)/i),_0x5306c6=_0x303d7a?_0x132288[_0x530c22(0x268)](Number,_0x303d7a[0x153d+0x1*0x126d+-0x30d*0xd]):0x365f+0xe3*0xd1+-0xd*0xb3a;if(_0x4bf64c)updateTypingIndicator(_0x4bf64c,_0x132288[_0x530c22(0x1ca)]);if(_0x2dcb01)setVoiceStatus(_0x132288['qwvHn'],_0x132288[_0x530c22(0x1fa)]);playPcmBufferAsWav(_0x378f33,_0x5306c6,function(){const _0x1fcb2a=_0x530c22;if(_0x4bf64c)removeTypingIndicator(_0x4bf64c);setVoiceStatus(_0x132288['cuLul'],_0x132288[_0x1fcb2a(0x16d)]);},function(){if(_0x4bf64c)updateTypingIndicator(_0x4bf64c,'SuFi\x20sedang\x20berbicara...');if(_0x2dcb01)_0x132288['dRKkz'](setVoiceStatus,_0x132288['qwvHn'],_0x132288['JNduc']);});return;}const _0x5dba43=await _0x27d5df['blob']();if(_0x4bf64c)updateTypingIndicator(_0x4bf64c,_0x132288['pBFTm']);if(_0x2dcb01)_0x132288[_0x530c22(0x174)](setVoiceStatus,_0x132288[_0x530c22(0x1fd)],_0x132288[_0x530c22(0x1fa)]);_0x132288[_0x530c22(0x1fc)](playTtsBlob,_0x5dba43,function(){const _0x2559a7=_0x530c22;if(_0x4bf64c)removeTypingIndicator(_0x4bf64c);setVoiceStatus(_0x132288[_0x2559a7(0x1f0)],_0x132288[_0x2559a7(0x16d)]);},function(){const _0x332f7f=_0x530c22;if(_0x4bf64c)_0x132288[_0x332f7f(0x1a8)](updateTypingIndicator,_0x4bf64c,'SuFi\x20sedang\x20berbicara...');if(_0x2dcb01)_0x132288[_0x332f7f(0x160)](setVoiceStatus,_0x132288[_0x332f7f(0x1fd)],_0x132288[_0x332f7f(0x1fa)]);});return;}let _0x3f1f93=null;try{_0x3f1f93=await _0x27d5df[_0x530c22(0x2e6)]();}catch(_0x1c7171){}if(!_0x27d5df['ok']){if(_0x4bf64c)_0x132288[_0x530c22(0x2f7)](removeTypingIndicator,_0x4bf64c);_0x132288[_0x530c22(0x273)](setVoiceStatus,_0x530c22(0x275),_0x132288[_0x530c22(0x16d)]),_0x132288[_0x530c22(0x301)](appendMessage,_0x132288[_0x530c22(0x296)],_0x132288[_0x530c22(0x2c4)]);return;}if(_0x3f1f93&&_0x3f1f93[_0x530c22(0x166)]){const _0x102995=parsePcmDataUrl(_0x3f1f93[_0x530c22(0x166)]);if(_0x102995&&isPcmMimeType(_0x102995[_0x530c22(0x24d)])){if(_0x4bf64c)_0x132288[_0x530c22(0x1cd)](updateTypingIndicator,_0x4bf64c,_0x132288[_0x530c22(0x1ca)]);if(_0x2dcb01)setVoiceStatus(_0x132288[_0x530c22(0x1fd)],_0x132288[_0x530c22(0x1fa)]);_0x132288[_0x530c22(0x1b9)](playPcmBase64AsWav,_0x102995[_0x530c22(0x187)],_0x102995[_0x530c22(0x148)],function(){const _0x10750d=_0x530c22;if(_0x4bf64c)_0x132288[_0x10750d(0x2f7)](removeTypingIndicator,_0x4bf64c);_0x132288['Cascd'](setVoiceStatus,_0x10750d(0x275),_0x10750d(0x214));},function(){const _0x48051c=_0x530c22;if(_0x4bf64c)_0x132288[_0x48051c(0x1e7)](updateTypingIndicator,_0x4bf64c,_0x132288['pBFTm']);if(_0x2dcb01)_0x132288[_0x48051c(0x2e8)](setVoiceStatus,_0x48051c(0x159),_0x132288[_0x48051c(0x1fa)]);});return;}if(_0x4bf64c)_0x132288[_0x530c22(0x174)](updateTypingIndicator,_0x4bf64c,_0x132288['pBFTm']);if(_0x2dcb01)_0x132288[_0x530c22(0x165)](setVoiceStatus,_0x132288['qwvHn'],_0x530c22(0x2cf));playTtsAudio(_0x3f1f93['audioUrl'],function(){const _0x42dbaa=_0x530c22;if(_0x4bf64c)_0x132288[_0x42dbaa(0x2f7)](removeTypingIndicator,_0x4bf64c);_0x132288[_0x42dbaa(0x165)](setVoiceStatus,_0x132288[_0x42dbaa(0x1f0)],_0x132288[_0x42dbaa(0x16d)]);},function(){const _0x46143e=_0x530c22;if(_0x4bf64c)_0x132288['Cascd'](updateTypingIndicator,_0x4bf64c,_0x132288[_0x46143e(0x1ca)]);if(_0x2dcb01)setVoiceStatus(_0x132288['qwvHn'],_0x132288[_0x46143e(0x1fa)]);});return;}const _0x5b0491=_0x3f1f93&&_0x3f1f93[_0x530c22(0x202)]&&_0x3f1f93[_0x530c22(0x202)]['url'];if(_0x5b0491){const _0x15e538=_0x132288['sRZpQ'](parsePcmDataUrl,_0x5b0491);if(_0x15e538&&isPcmMimeType(_0x15e538[_0x530c22(0x24d)])){if(_0x4bf64c)_0x132288[_0x530c22(0x16f)](updateTypingIndicator,_0x4bf64c,_0x132288[_0x530c22(0x1ca)]);if(_0x2dcb01)_0x132288[_0x530c22(0x14f)](setVoiceStatus,_0x132288['qwvHn'],_0x132288[_0x530c22(0x1fa)]);_0x132288['MKueJ'](playPcmBase64AsWav,_0x15e538[_0x530c22(0x187)],_0x15e538[_0x530c22(0x148)],function(){const _0x1b144e=_0x530c22;if(_0x4bf64c)_0x132288[_0x1b144e(0x1d5)](removeTypingIndicator,_0x4bf64c);_0x132288[_0x1b144e(0x18f)](setVoiceStatus,_0x132288['cuLul'],_0x132288[_0x1b144e(0x16d)]);},function(){const _0x64831f=_0x530c22;if(_0x4bf64c)_0x132288['dRKkz'](updateTypingIndicator,_0x4bf64c,_0x132288['pBFTm']);if(_0x2dcb01)_0x132288[_0x64831f(0x284)](setVoiceStatus,_0x132288[_0x64831f(0x1fd)],'SuFi\x20menjawab...');});return;}if(_0x4bf64c)_0x132288[_0x530c22(0x299)](updateTypingIndicator,_0x4bf64c,_0x132288[_0x530c22(0x1ca)]);if(_0x2dcb01)_0x132288[_0x530c22(0x27f)](setVoiceStatus,_0x530c22(0x159),_0x132288['JNduc']);_0x132288[_0x530c22(0x31c)](playTtsAudio,_0x5b0491,function(){const _0x14fc1b=_0x530c22;if(_0x4bf64c)_0x132288[_0x14fc1b(0x268)](removeTypingIndicator,_0x4bf64c);_0x132288[_0x14fc1b(0x18f)](setVoiceStatus,_0x132288[_0x14fc1b(0x1f0)],_0x14fc1b(0x214));},function(){const _0x33e93d=_0x530c22;if(_0x4bf64c)_0x132288['zxBEt'](updateTypingIndicator,_0x4bf64c,_0x132288['pBFTm']);if(_0x2dcb01)_0x132288[_0x33e93d(0x284)](setVoiceStatus,_0x132288[_0x33e93d(0x1fd)],_0x132288['JNduc']);});return;}const _0x5279ec=_0x3f1f93&&(_0x3f1f93[_0x530c22(0x246)]||_0x3f1f93[_0x530c22(0x202)]&&_0x3f1f93[_0x530c22(0x202)]['data']),_0x2c775c=_0x3f1f93&&_0x3f1f93[_0x530c22(0x202)]&&_0x3f1f93[_0x530c22(0x202)][_0x530c22(0x24d)]||_0x132288[_0x530c22(0x2a1)];if(_0x5279ec){if(_0x132288[_0x530c22(0x1a5)](isPcmMimeType,_0x2c775c)){const _0x54a386=_0x2c775c[_0x530c22(0x31d)](/rate=(\d+)/i),_0x32f03d=_0x54a386?_0x132288[_0x530c22(0x2cb)](Number,_0x54a386[0x1*-0x1265+0x9cf*0x3+-0x1*0xb07]):-0x3446*0x1+0x165a*0x7+-0x538*0x2;if(_0x4bf64c)_0x132288[_0x530c22(0x273)](updateTypingIndicator,_0x4bf64c,_0x530c22(0x272));if(_0x2dcb01)_0x132288['MVQlS'](setVoiceStatus,_0x530c22(0x159),_0x132288[_0x530c22(0x1fa)]);playPcmBase64AsWav(_0x5279ec,_0x32f03d,function(){if(_0x4bf64c)removeTypingIndicator(_0x4bf64c);_0x132288['kPFaN'](setVoiceStatus,_0x132288['cuLul'],'Tekan\x20mic\x20untuk\x20mulai');},function(){const _0x22b467=_0x530c22;if(_0x4bf64c)_0x132288[_0x22b467(0x1cd)](updateTypingIndicator,_0x4bf64c,_0x22b467(0x272));if(_0x2dcb01)setVoiceStatus(_0x132288[_0x22b467(0x1fd)],_0x22b467(0x2cf));});}else{if(_0x4bf64c)_0x132288[_0x530c22(0x21a)](updateTypingIndicator,_0x4bf64c,_0x132288[_0x530c22(0x1ca)]);if(_0x2dcb01)setVoiceStatus(_0x132288[_0x530c22(0x1fd)],'SuFi\x20menjawab...');_0x132288[_0x530c22(0x1b9)](playTtsBase64,_0x5279ec,_0x2c775c,function(){const _0x1d5590=_0x530c22;if(_0x4bf64c)_0x132288[_0x1d5590(0x1a5)](removeTypingIndicator,_0x4bf64c);_0x132288[_0x1d5590(0x228)](setVoiceStatus,_0x132288[_0x1d5590(0x1f0)],_0x1d5590(0x214));},function(){const _0x130ce7=_0x530c22;if(_0x4bf64c)_0x132288[_0x130ce7(0x1c6)](updateTypingIndicator,_0x4bf64c,_0x132288['pBFTm']);if(_0x2dcb01)_0x132288['GCIdU'](setVoiceStatus,_0x132288[_0x130ce7(0x1fd)],_0x132288['JNduc']);});}return;}const _0xc0d35c=_0x3f1f93&&_0x3f1f93[_0x530c22(0x2f4)]&&_0x3f1f93[_0x530c22(0x2f4)][-0x7f7+-0xbf9+0x13f*0x10]&&_0x3f1f93[_0x530c22(0x2f4)][-0x1*0x24f7+-0x1*-0xe67+-0x4*-0x5a4]['content']&&_0x3f1f93[_0x530c22(0x2f4)][-0x106b+0x262+0xe09][_0x530c22(0x298)][_0x530c22(0x1f9)]&&_0x3f1f93[_0x530c22(0x2f4)][0x4*0x763+-0xf*0x1dd+-0x199][_0x530c22(0x298)][_0x530c22(0x1f9)][-0xdf3*0x1+0x19*0x181+-0x17a6]&&_0x3f1f93['candidates'][0x24a8+0x14e*-0x7+-0x21e*0xd][_0x530c22(0x298)][_0x530c22(0x1f9)][-0x100e+-0x1c6*-0x3+0xabc][_0x530c22(0x297)];if(_0xc0d35c&&_0xc0d35c[_0x530c22(0x2a6)]){const _0x18a689=_0xc0d35c[_0x530c22(0x24d)]||_0x530c22(0x2d7);if(_0x132288[_0x530c22(0x2b3)](isPcmMimeType,_0x18a689)){const _0x5a3bbb=_0x18a689[_0x530c22(0x31d)](/rate=(\d+)/i),_0x472bba=_0x5a3bbb?_0x132288[_0x530c22(0x2c5)](Number,_0x5a3bbb[0x3*-0x7f1+0x3d*-0x8a+0x40d*0xe]):0x1*-0x224e+0xa03a*0x1+0x47*-0x74;if(_0x4bf64c)updateTypingIndicator(_0x4bf64c,_0x132288[_0x530c22(0x1ca)]);if(_0x2dcb01)setVoiceStatus(_0x132288[_0x530c22(0x1fd)],_0x530c22(0x2cf));_0x132288[_0x530c22(0x19b)](playPcmBase64AsWav,_0xc0d35c[_0x530c22(0x2a6)],_0x472bba,function(){const _0x42b927=_0x530c22;if(_0x4bf64c)removeTypingIndicator(_0x4bf64c);_0x132288[_0x42b927(0x2fb)](setVoiceStatus,_0x132288[_0x42b927(0x1f0)],_0x132288[_0x42b927(0x16d)]);},function(){const _0x233c0b=_0x530c22;if(_0x4bf64c)_0x132288[_0x233c0b(0x1cb)](updateTypingIndicator,_0x4bf64c,_0x132288[_0x233c0b(0x1ca)]);if(_0x2dcb01)setVoiceStatus(_0x132288[_0x233c0b(0x1fd)],_0x132288['JNduc']);});}else{if(_0x4bf64c)_0x132288[_0x530c22(0x245)](updateTypingIndicator,_0x4bf64c,_0x132288[_0x530c22(0x1ca)]);if(_0x2dcb01)setVoiceStatus(_0x132288['qwvHn'],_0x132288[_0x530c22(0x1fa)]);_0x132288[_0x530c22(0x194)](playTtsBase64,_0xc0d35c[_0x530c22(0x2a6)],_0x18a689,function(){const _0x197316=_0x530c22;if(_0x4bf64c)removeTypingIndicator(_0x4bf64c);setVoiceStatus(_0x132288[_0x197316(0x1f0)],_0x197316(0x214));},function(){const _0x51ff1a=_0x530c22;if(_0x4bf64c)_0x132288[_0x51ff1a(0x2fb)](updateTypingIndicator,_0x4bf64c,_0x132288['pBFTm']);if(_0x2dcb01)_0x132288[_0x51ff1a(0x16f)](setVoiceStatus,_0x132288[_0x51ff1a(0x1fd)],_0x132288[_0x51ff1a(0x1fa)]);});}return;}if(_0x4bf64c)removeTypingIndicator(_0x4bf64c);_0x132288[_0x530c22(0x165)](setVoiceStatus,_0x132288[_0x530c22(0x1f0)],_0x530c22(0x214)),_0x132288[_0x530c22(0x15b)](appendMessage,_0x132288[_0x530c22(0x296)],_0x132288[_0x530c22(0x2c4)]);}async function sendVoiceMessage(_0x3b2014){const _0x4b0312=_0x1bc161,_0x3ec702={'lZlFd':'auto','eWNDT':function(_0x381a92,_0x250e96,_0x2d8c71){return _0x381a92(_0x250e96,_0x2d8c71);},'GiWxH':_0x4b0312(0x2df),'MxXGg':_0x4b0312(0x319),'imuNz':'SuFi\x20berfikir...','ALfRn':function(_0x146bed,_0x199819){return _0x146bed===_0x199819;},'JfZcl':function(_0x4207e1,_0x127824){return _0x4207e1(_0x127824);},'ImuDo':'SuFi\x20sedang\x20berfikir...','EYdTK':_0x4b0312(0x2ce),'sdLIV':_0x4b0312(0x18d),'utWrh':function(_0x4e8d61,_0x3abfe9){return _0x4e8d61===_0x3abfe9;},'EgicB':_0x4b0312(0x1ee),'bJONa':_0x4b0312(0x14a),'OmlNl':_0x4b0312(0x1e9),'OsrlP':'bot','XEhVq':function(_0x56a0da,_0x329ac3){return _0x56a0da||_0x329ac3;},'ycLam':function(_0x40899d,_0x222e61){return _0x40899d(_0x222e61);},'sirAj':function(_0x2d0114,_0x279f29,_0x56c0a9){return _0x2d0114(_0x279f29,_0x56c0a9);},'yOzbJ':_0x4b0312(0x275),'WXkhx':'Maaf,\x20saya\x20sedang\x20gangguan.\x20Coba\x20lagi\x20nanti.','ioBDD':function(_0x36b7fc,_0x4b66a5){return _0x36b7fc(_0x4b66a5);}},_0xd43951=(_0x3b2014||'')['trim']();if(!_0xd43951)return;chatInput['value']='',chatInput['style'][_0x4b0312(0x2f0)]=_0x3ec702['lZlFd'],_0x3ec702[_0x4b0312(0x2f6)](appendMessage,_0x3ec702[_0x4b0312(0x25b)],_0xd43951),_0x3ec702[_0x4b0312(0x2f6)](setVoiceStatus,_0x3ec702['MxXGg'],_0x3ec702[_0x4b0312(0x1f3)]),setInputState(!![]);const _0x1860c1=_0x3ec702[_0x4b0312(0x167)](currentMode,_0x4b0312(0x2e1))?null:_0x3ec702[_0x4b0312(0x143)](showTypingIndicator,_0x3ec702[_0x4b0312(0x1ae)]);try{const _0x60ca93=new FormData(),_0x3c2d59=buildChatPrompt(_0xd43951);_0x60ca93[_0x4b0312(0x234)](_0x3ec702[_0x4b0312(0x1dd)],_0x3c2d59);const _0x2fd54a=await fetch(_0x4b0312(0x169),{'method':_0x4b0312(0x241),'cache':_0x3ec702[_0x4b0312(0x1b2)],'body':_0x60ca93}),_0x1f10f4=await _0x2fd54a['json']();if(_0x1f10f4[_0x4b0312(0x215)]||_0x1f10f4[_0x4b0312(0x1e8)]){const _0xe40245=_0x1f10f4['response']||_0x1f10f4[_0x4b0312(0x2f4)]?.[0x1*-0xb7a+-0x1*-0x886+0x2f4]?.['content']?.[_0x4b0312(0x1f9)]?.[0xa*-0xbb+0x19b9+-0x126b]?.['text'],_0x1bb128=_0x3ec702[_0x4b0312(0x1a0)](typeof _0xe40245,_0x3ec702[_0x4b0312(0x24b)])?_0xe40245['trim']():'';if(_0x1860c1)await _0x3ec702[_0x4b0312(0x143)](showAnsweredStatus,_0x1860c1);setVoiceStatus(_0x3ec702[_0x4b0312(0x28e)],_0x3ec702[_0x4b0312(0x242)]),appendMessage(_0x3ec702[_0x4b0312(0x269)],_0x3ec702['XEhVq'](_0x1bb128,'')),_0x1bb128&&await _0x3ec702[_0x4b0312(0x23d)](requestTtsAudio,_0x1bb128);}else{if(_0x1860c1)removeTypingIndicator(_0x1860c1);_0x3ec702[_0x4b0312(0x23c)](setVoiceStatus,_0x3ec702['yOzbJ'],_0x4b0312(0x214)),appendMessage(_0x3ec702[_0x4b0312(0x269)],_0x3ec702['WXkhx']);}}catch(_0x34259f){if(_0x1860c1)_0x3ec702[_0x4b0312(0x2ed)](removeTypingIndicator,_0x1860c1);setVoiceStatus(_0x3ec702[_0x4b0312(0x316)],_0x4b0312(0x214)),_0x3ec702[_0x4b0312(0x2f6)](appendMessage,_0x3ec702[_0x4b0312(0x269)],_0x4b0312(0x2fe));}finally{setInputState(![]);}}async function sendChatMessage(){const _0x556f38=_0x1bc161,_0x247afe={'Ykhgq':_0x556f38(0x205),'neCKR':_0x556f38(0x312),'DNLhY':function(_0x311b83,_0x3e47e9){return _0x311b83/_0x3e47e9;},'zWJcR':function(_0x5e2e45,_0x2a87fe){return _0x5e2e45/_0x2a87fe;},'toFwW':function(_0x133f79,_0x4ad771){return _0x133f79/_0x4ad771;},'DOvBB':function(_0x1f8580,_0x3d5d5f){return _0x1f8580/_0x3d5d5f;},'mctgC':function(_0x3cb9a7,_0x45083d){return _0x3cb9a7<_0x45083d;},'TIXFH':'user','xIFym':function(_0x4ab014){return _0x4ab014();},'FoUVS':function(_0x56313e,_0x2d621a){return _0x56313e(_0x2d621a);},'uArWF':function(_0x10f69a,_0x48d095){return _0x10f69a!==_0x48d095;},'ZYTnp':_0x556f38(0x2f8),'tMgyG':function(_0xd58c51,_0x1507dd,_0x2b5a8b){return _0xd58c51(_0x1507dd,_0x2b5a8b);},'BOAum':_0x556f38(0x191),'ilcqt':function(_0x3bba75,_0x4b19d2){return _0x3bba75===_0x4b19d2;},'EunBD':_0x556f38(0x1c3),'xCDhc':_0x556f38(0x2ce),'uDwPo':function(_0x5d0a59,_0x3b33f3,_0x41d398){return _0x5d0a59(_0x3b33f3,_0x41d398);},'eUpLv':_0x556f38(0x2fd),'xTlcG':_0x556f38(0x169),'eQpQN':_0x556f38(0x241),'KmvJX':_0x556f38(0x18d),'VIVno':'bot','uXzcY':_0x556f38(0x274),'XCegk':_0x556f38(0x197),'pndXo':'server/generate.php','ONjwS':function(_0x1fb8e7,_0x2c6df2,_0x3cb1ee,_0x374227){return _0x1fb8e7(_0x2c6df2,_0x3cb1ee,_0x374227);},'kLQsx':_0x556f38(0x2ab),'Jvlnf':function(_0x4ff55d,_0x447fda,_0x2dcf1d){return _0x4ff55d(_0x447fda,_0x2dcf1d);},'IUAmA':'Mengoptimalkan\x20instruksi...','JZeVM':function(_0x36c8c5,_0xef31e8){return _0x36c8c5||_0xef31e8;},'WPNfT':_0x556f38(0x317),'ATJjS':_0x556f38(0x209),'RdsxX':function(_0xcdfe44,_0x363019,_0x29dbf0){return _0xcdfe44(_0x363019,_0x29dbf0);},'ivtvn':function(_0x358acd,_0x63acd8){return _0x358acd(_0x63acd8);},'KfBhe':_0x556f38(0x26d),'haHNQ':'instruction','MtDTq':function(_0x1c22a6,_0x4a71ec,_0x55a680){return _0x1c22a6(_0x4a71ec,_0x55a680);},'jZPqJ':function(_0x2250ad,_0x405d8f,_0x4b9a0e,_0x5cd4c2){return _0x2250ad(_0x405d8f,_0x4b9a0e,_0x5cd4c2);},'ioByl':function(_0x4f587d,_0x19a23c,_0x2292b0){return _0x4f587d(_0x19a23c,_0x2292b0);},'wzUXZ':_0x556f38(0x253),'RsgZS':_0x556f38(0x1ee),'Tihjc':function(_0x609bbd,_0x5ec1ca,_0x43ff12){return _0x609bbd(_0x5ec1ca,_0x43ff12);},'CRDUa':_0x556f38(0x2e1),'gbWur':_0x556f38(0x14a),'ZZOBL':_0x556f38(0x1e9),'xHOQZ':_0x556f38(0x21e),'YuZXH':'Terjadi\x20kesalahan\x20koneksi.'},_0x1d54fa=chatInput[_0x556f38(0x164)]['trim']();if(!_0x1d54fa&&!currentChatImage)return;chatInput[_0x556f38(0x164)]='',chatInput['style'][_0x556f38(0x2f0)]=_0x247afe[_0x556f38(0x1e6)];let _0x54b385=null,_0x3c120d=_0x247afe['neCKR'];if(currentChatImage){_0x54b385=chatImagePreview[_0x556f38(0x2fc)];if(chatImagePreview[_0x556f38(0x188)]&&chatImagePreview['naturalHeight']){const _0xb4ee29=chatImagePreview['naturalWidth'],_0x185bf8=chatImagePreview['naturalHeight'],_0x492790=_0x247afe[_0x556f38(0x2aa)](_0xb4ee29,_0x185bf8),_0xef8eea={'1:1':0x1,'16:9':_0x247afe[_0x556f38(0x1c4)](0x97a*-0x3+0x19*-0x12b+0x1b*0x223,-0xc85*-0x1+-0x1*-0xdc1+-0x1a3d),'9:16':_0x247afe['toFwW'](-0x1a8a+-0x1*-0x1333+0x760,-0x1350+-0x1*-0x25b3+-0x1253),'4:3':_0x247afe[_0x556f38(0x2aa)](-0x244c+-0x1d7b*0x1+-0x1*-0x41cb,0x2*0x14c+-0x215d+0x1ec8),'3:4':(-0xa1b+-0x644+0x1062)/(0x1132*-0x2+-0x1f96+0x41fe),'21:9':_0x247afe['DOvBB'](-0xf*-0x1c1+-0x827*-0x1+0x1*-0x2261,0x4ee*0x2+-0x1fb7+0x15e4),'9:21':_0x247afe[_0x556f38(0x2aa)](-0x1*0xf2+0x1253*-0x1+0x134e,0x1810+0x1*-0x9fd+-0x18e*0x9)};let _0x1c8c02=Infinity;for(const [_0x17f8af,_0x14060a]of Object['entries'](_0xef8eea)){const _0x18c1dc=Math[_0x556f38(0x30f)](_0x492790-_0x14060a);_0x247afe['mctgC'](_0x18c1dc,_0x1c8c02)&&(_0x1c8c02=_0x18c1dc,_0x3c120d=_0x17f8af);}console[_0x556f38(0x1a4)](_0x556f38(0x2b6)+_0xb4ee29+'x'+_0x185bf8+'\x20('+_0x492790[_0x556f38(0x243)](0x1e34*0x1+0x8fd+-0x272f*0x1)+')\x20->\x20Closest:\x20'+_0x3c120d);}}appendMessage(_0x247afe[_0x556f38(0x265)],_0x1d54fa,_0x54b385);const _0x569910=currentChatImage;_0x247afe['xIFym'](clearChatImage),_0x247afe['FoUVS'](setInputState,!![]);const _0x4e2e32=showTypingIndicator();_0x247afe['uArWF'](currentMode,_0x247afe[_0x556f38(0x211)])&&_0x247afe[_0x556f38(0x17d)](updateTypingIndicator,_0x4e2e32,_0x247afe[_0x556f38(0x145)]);try{if(_0x247afe[_0x556f38(0x23b)](currentMode,_0x247afe[_0x556f38(0x211)])){if(!_0x569910){updateTypingIndicator(_0x4e2e32,_0x247afe[_0x556f38(0x304)]);const _0x3bb8a7=new FormData();_0x3bb8a7['append'](_0x247afe[_0x556f38(0x308)],_0x247afe['uDwPo'](buildRefinePrompt,_0x247afe[_0x556f38(0x2e5)],_0x1d54fa));const _0x631d81=await _0x247afe[_0x556f38(0x23a)](fetch,_0x247afe[_0x556f38(0x2b2)],{'method':_0x247afe[_0x556f38(0x261)],'cache':_0x247afe[_0x556f38(0x190)],'body':_0x3bb8a7}),_0x15584a=await _0x631d81[_0x556f38(0x2e6)](),_0x2bce31=_0x15584a[_0x556f38(0x1e8)]||_0x1d54fa;_0x247afe[_0x556f38(0x22e)](removeTypingIndicator,_0x4e2e32),appendMessage(_0x247afe['VIVno'],_0x556f38(0x1ce)+_0x2bce31);const _0x225cdb=_0x247afe[_0x556f38(0x22e)](showTypingIndicator,_0x247afe[_0x556f38(0x30c)]),_0x195e54=new FormData();_0x195e54['append'](_0x556f38(0x1d1),_0x2bce31),_0x195e54[_0x556f38(0x234)](_0x247afe[_0x556f38(0x2f3)],'1:1');const _0x470dad=await _0x247afe[_0x556f38(0x17d)](fetch,_0x247afe[_0x556f38(0x2d6)],{'method':_0x247afe[_0x556f38(0x261)],'cache':_0x247afe['KmvJX'],'body':_0x195e54}),_0x3a6ff9=await _0x470dad[_0x556f38(0x2e6)]();_0x247afe['FoUVS'](removeTypingIndicator,_0x225cdb);if(_0x3a6ff9[_0x556f38(0x215)]&&_0x3a6ff9[_0x556f38(0x2d9)]){_0x247afe[_0x556f38(0x2bc)](appendMessage,_0x247afe[_0x556f38(0x20d)],_0x556f38(0x168),_0x3a6ff9['imageUrl']);if(window[_0x556f38(0x1f6)])window['playSuccessSound']();}else{appendMessage(_0x556f38(0x1ea),_0x247afe[_0x556f38(0x177)]);if(window[_0x556f38(0x1c2)])window['playErrorSound']();}}else{_0x247afe[_0x556f38(0x2ca)](updateTypingIndicator,_0x4e2e32,_0x247afe['IUAmA']);const _0x48b6b3=_0x247afe[_0x556f38(0x1a2)](_0x1d54fa,_0x247afe[_0x556f38(0x26f)]),_0xfebb21=new FormData();_0xfebb21[_0x556f38(0x234)]('prompt',_0x247afe[_0x556f38(0x17d)](buildRefinePrompt,'Refine\x20this\x20user\x20request\x20into\x20a\x20precise\x20image\x20editing\x20instruction\x20(English).\x20User\x20request:\x20\x22{text}\x22.\x20The\x20user\x20has\x20also\x20provided\x20an\x20image\x20which\x20you\x20can\x20see.\x20Output\x20ONLY\x20the\x20instruction.',_0x48b6b3)),_0xfebb21[_0x556f38(0x234)](_0x247afe[_0x556f38(0x276)],_0x569910);const _0xb62770=await _0x247afe[_0x556f38(0x289)](fetch,_0x247afe[_0x556f38(0x2b2)],{'method':'POST','cache':_0x247afe['KmvJX'],'body':_0xfebb21}),_0x30d935=await _0xb62770[_0x556f38(0x2e6)](),_0x37d93b=_0x30d935[_0x556f38(0x1e8)]||_0x48b6b3;_0x247afe[_0x556f38(0x16e)](removeTypingIndicator,_0x4e2e32),appendMessage(_0x247afe['VIVno'],_0x556f38(0x20b)+_0x37d93b);const _0x1eac05=_0x247afe['FoUVS'](showTypingIndicator,_0x247afe[_0x556f38(0x24e)]),_0x559a44=new FormData();_0x559a44['append'](_0x247afe[_0x556f38(0x2b8)],_0x37d93b),_0x559a44[_0x556f38(0x234)](_0x247afe[_0x556f38(0x276)],_0x569910),_0x559a44[_0x556f38(0x234)]('aspectRatio',_0x3c120d);const _0x553119=await _0x247afe[_0x556f38(0x1c9)](fetch,_0x247afe[_0x556f38(0x2d6)],{'method':_0x247afe[_0x556f38(0x261)],'cache':_0x556f38(0x18d),'body':_0x559a44}),_0x195b30=await _0x553119['json']();removeTypingIndicator(_0x1eac05);if(_0x195b30['success']&&_0x195b30[_0x556f38(0x2d9)]){_0x247afe[_0x556f38(0x288)](appendMessage,_0x247afe['VIVno'],'Selesai!\x20Ini\x20hasilnya:',_0x195b30[_0x556f38(0x2d9)]);if(window[_0x556f38(0x1f6)])window[_0x556f38(0x1f6)]();}else{_0x247afe[_0x556f38(0x1b8)](appendMessage,_0x247afe[_0x556f38(0x20d)],_0x247afe[_0x556f38(0x180)]);if(window[_0x556f38(0x1c2)])window[_0x556f38(0x1c2)]();}}}else{const _0x448b64=new FormData(),_0x53af6e=_0x247afe[_0x556f38(0x16e)](buildChatPrompt,_0x1d54fa);_0x448b64[_0x556f38(0x234)](_0x247afe[_0x556f38(0x308)],_0x53af6e);_0x569910&&_0x448b64[_0x556f38(0x234)](_0x247afe[_0x556f38(0x276)],_0x569910);const _0x42f244=await _0x247afe[_0x556f38(0x2ca)](fetch,_0x247afe['xTlcG'],{'method':_0x556f38(0x241),'cache':_0x247afe[_0x556f38(0x190)],'body':_0x448b64}),_0x8ff5db=await _0x42f244['json']();if(_0x8ff5db[_0x556f38(0x215)]||_0x8ff5db[_0x556f38(0x1e8)]){const _0x306a4e=_0x8ff5db[_0x556f38(0x1e8)]||_0x8ff5db['candidates']?.[-0x719+0x395+0x2*0x1c2]?.[_0x556f38(0x298)]?.[_0x556f38(0x1f9)]?.[-0x1d94+-0x15*-0x7+0x113*0x1b]?.[_0x556f38(0x2d5)],_0x1456e2=_0x247afe[_0x556f38(0x23b)](typeof _0x306a4e,_0x247afe[_0x556f38(0x310)])?_0x306a4e['trim']():'';await _0x247afe['ivtvn'](showAnsweredStatus,_0x4e2e32),_0x247afe['Tihjc'](appendMessage,_0x247afe['VIVno'],_0x247afe[_0x556f38(0x1a2)](_0x1456e2,'')),_0x247afe['ilcqt'](currentMode,_0x247afe['CRDUa'])&&_0x1456e2&&(setVoiceStatus(_0x247afe['gbWur'],_0x247afe['ZZOBL']),await requestTtsAudio(_0x1456e2));}else _0x247afe[_0x556f38(0x22e)](removeTypingIndicator,_0x4e2e32),_0x247afe[_0x556f38(0x1c9)](appendMessage,_0x247afe[_0x556f38(0x20d)],_0x247afe[_0x556f38(0x1bc)]);}}catch(_0x3b36ff){console['error'](_0x3b36ff),_0x247afe[_0x556f38(0x16e)](removeTypingIndicator,_0x4e2e32),_0x247afe['uDwPo'](appendMessage,_0x247afe['VIVno'],_0x247afe['YuZXH']);}finally{_0x247afe[_0x556f38(0x22e)](setInputState,![]);}}
+// Assistant Logic
+var assistantModal = document.getElementById('assistant-modal');
+var chatContainer = document.getElementById('chat-container');
+var chatInput = document.getElementById('chat-input');
+var chatFileInput = document.getElementById('chat-file-input');
+var chatImagePreviewContainer = document.getElementById('chat-image-preview-container');
+var chatImagePreview = document.getElementById('chat-image-preview');
+var chatSendBtn = document.getElementById('chat-send-btn');
+var chatImageBtn = document.getElementById('chat-image-btn');
+var voiceMicBtn = document.getElementById('voice-mic-btn');
+var voiceUi = document.getElementById('voice-ui');
+var voiceOrb = document.getElementById('voice-orb');
+var voiceStatus = document.getElementById('voice-status');
+var voiceStatusText = document.getElementById('voice-status-text');
+var voiceStatusIcon = document.getElementById('voice-status-icon');
+// Audio Objects
+var aiResponseAudio = new Audio('https://cdn.jsdelivr.net/gh/karyawaktuluang/magic.fitri@main/assets/chat.mp3');
+var currentChatImage = null; // Store File object
+var currentMode = null; // 'chat' or 'image'
+var voiceRecognizer = null;
+var isVoiceListening = false;
+var isVoiceStarting = false;
+var ttsAudio = null;
+var CHAT_HISTORY_KEY = 'sulapfitri_sufi_history';
+var CHAT_HISTORY_LIMIT = 24;
+
+function loadChatHistory() {
+  try {
+    var raw = localStorage.getItem(CHAT_HISTORY_KEY);
+    if (!raw) return [];
+    var parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter(function (item) {
+      return item && typeof item === 'object' && typeof item.text === 'string' && item.text.trim() !== '';
+    });
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveChatHistory(items) {
+  try {
+    localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(items));
+  } catch (e) {
+  }
+}
+
+function addChatHistory(role, text) {
+  var normalized = (text || '').trim();
+  if (!normalized) return;
+  var items = loadChatHistory();
+  items.push({
+    role: role === 'user' ? 'user' : 'assistant',
+    text: normalized,
+    mode: currentMode || 'unknown',
+    ts: Date.now()
+  });
+  if (items.length > CHAT_HISTORY_LIMIT) {
+    items = items.slice(items.length - CHAT_HISTORY_LIMIT);
+  }
+  saveChatHistory(items);
+}
+
+function buildContextLines(currentText) {
+  var items = loadChatHistory();
+  if (items.length && currentText) {
+    var last = items[items.length - 1];
+    if (last && last.role === 'user' && last.text === currentText) {
+      items = items.slice(0, -1);
+    }
+  }
+  return items.map(function (item) {
+    var label = item.role === 'user' ? 'User' : 'Assistant';
+    return label + ': ' + item.text;
+  });
+}
+
+function buildChatPrompt(currentText) {
+  var lines = buildContextLines(currentText);
+  var contextBlock = lines.length ? 'Riwayat percakapan:\n' + lines.join('\n') + '\n\n' : '';
+  var systemPrompt = "Anda adalah Sufi, asisten AI yang cerdas dan ramah yang dibuat oleh IchsanLabs. Gunakan Bahasa Indonesia yang sopan. Batasi jawaban maksimal 50 kata. Tidak perlu menjelaskan itu semua kecuali ditanya\n\n";
+  return systemPrompt + contextBlock + 'User: ' + currentText;
+}
+
+function buildRefinePrompt(template, currentText) {
+  var lines = buildContextLines(currentText);
+  var contextBlock = lines.length ? 'Context percakapan:\n' + lines.join('\n') + '\n\n' : '';
+  return contextBlock + template.replace('{text}', currentText);
+}
+
+function selectMode(mode) {
+  currentMode = mode;
+  // UI Toggles
+  document.getElementById('mode-selection').classList.add('hidden');
+  document.getElementById('chat-messages-container').classList.remove('hidden');
+  document.getElementById('input-area').classList.remove('hidden');
+  document.getElementById('switch-mode-btn').classList.remove('hidden');
+  // Color Updates
+  const modal = document.getElementById('assistant-modal');
+  modal.classList.remove('mode-chat-theme', 'mode-image-theme', 'mode-voice-theme');
+  // Manage Chat Containers
+  const chatChat = document.getElementById('chat-messages-chat');
+  const chatImage = document.getElementById('chat-messages-image');
+  if (mode === 'chat') {
+    modal.classList.add('mode-chat-theme');
+    chatChat.classList.remove('hidden');
+    chatImage.classList.add('hidden');
+    if (voiceUi) voiceUi.classList.add('hidden');
+    document.getElementById('chat-messages-container').classList.remove('hidden');
+    document.getElementById('input-area').classList.remove('hidden');
+    chatInput.readOnly = false;
+    chatInput.placeholder = "Ketik pesan...";
+    chatSendBtn.classList.remove('hidden');
+    chatImageBtn.classList.remove('hidden');
+    chatFileInput.disabled = false;
+    if (chatChat.innerHTML.trim() === '') {
+      appendMessage('bot', "Assalamualaikum! Saya siap menjawab pertanyaan seputar Ramadhan. Apa yang ingin ditanyakan?");
+    }
+    setVoiceSpeaking(false);
+  } else if (mode === 'voice') {
+    modal.classList.add('mode-voice-theme');
+    chatChat.classList.add('hidden');
+    chatImage.classList.add('hidden');
+    if (voiceUi) voiceUi.classList.remove('hidden');
+    document.getElementById('chat-messages-container').classList.add('hidden');
+    document.getElementById('input-area').classList.add('hidden');
+    chatInput.readOnly = true;
+    chatInput.placeholder = "Tekan mic lalu bicara...";
+    chatSendBtn.classList.add('hidden');
+    chatImageBtn.classList.add('hidden');
+    chatFileInput.disabled = true;
+    clearChatImage();
+    setVoiceStatus('idle', 'Tekan mic untuk mulai');
+    setupVoiceRecognition();
+  } else {
+    modal.classList.add('mode-image-theme');
+    chatImage.classList.remove('hidden');
+    chatChat.classList.add('hidden');
+    if (voiceUi) voiceUi.classList.add('hidden');
+    document.getElementById('chat-messages-container').classList.remove('hidden');
+    document.getElementById('input-area').classList.remove('hidden');
+    chatInput.readOnly = false;
+    chatInput.placeholder = "Ketik pesan...";
+    chatSendBtn.classList.remove('hidden');
+    chatImageBtn.classList.remove('hidden');
+    chatFileInput.disabled = false;
+    // Initial Message if empty
+    if (chatImage.innerHTML.trim() === '') {
+      appendMessage('bot', "Mode Kreatif Aktif! Silakan tulis deskripsi gambar yang ingin dibuat atau upload foto untuk diedit.");
+    }
+    setVoiceSpeaking(false);
+  }
+  // Focus input
+  if (mode !== 'voice') {
+    chatInput.focus();
+  }
+  // Scroll to bottom of active container
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+function switchMode() {
+  currentMode = null;
+  document.getElementById('mode-selection').classList.remove('hidden');
+  document.getElementById('chat-messages-container').classList.add('hidden');
+  document.getElementById('input-area').classList.add('hidden');
+  document.getElementById('switch-mode-btn').classList.add('hidden');
+  if (voiceUi) voiceUi.classList.add('hidden');
+  // Reset Theme
+  const modal = document.getElementById('assistant-modal');
+  modal.classList.remove('mode-chat-theme', 'mode-image-theme', 'mode-voice-theme');
+  stopVoiceRecognition();
+  setVoiceSpeaking(false);
+  setVoiceStatus('idle', 'Tekan mic untuk mulai');
+}
+
+function openAssistantModal() {
+  window.showFeaturePage('assistant-modal');
+  // Scroll to bottom
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+  if (currentMode !== 'voice') {
+    chatInput.focus();
+  }
+}
+
+function closeAssistantModal() {
+  stopVoiceRecognition();
+  setVoiceSpeaking(false);
+  setVoiceStatus('idle', 'Tekan mic untuk mulai');
+  window.closeFeaturePage('assistant-modal');
+}
+
+window.openAssistantModal = openAssistantModal;
+window.closeAssistantModal = closeAssistantModal;
+window.selectMode = selectMode;
+window.switchMode = switchMode;
+window.sendChatMessage = sendChatMessage;
+// Auto-resize textarea
+chatInput.addEventListener('input', function () {
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + 'px';
+  if (this.value === '') this.style.height = 'auto';
+});
+// Enter to send
+chatInput.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    if (currentMode === 'voice') return;
+    e.preventDefault();
+    sendChatMessage();
+  }
+});
+// File Handling
+chatFileInput.addEventListener('change', function () {
+  const file = this.files[0];
+  if (file) {
+    currentChatImage = file;
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      chatImagePreview.src = e.target.result;
+      chatImagePreviewContainer.classList.remove('hidden');
+    }
+    reader.readAsDataURL(file);
+  }
+});
+
+function clearChatImage() {
+  currentChatImage = null;
+  chatFileInput.value = '';
+  chatImagePreview.src = '';
+  chatImagePreviewContainer.classList.add('hidden');
+}
+
+// Simple Markdown Parser
+function parseMarkdown(text) {
+  if (!text) return '';
+  let html = text
+  // Code blocks
+  .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+  // Inline code
+  .replace(/`([^`]+)`/g, '<code>$1</code>')
+  // Bold **text**
+  .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+  // Italic *text*
+  .replace(/\*(.*?)\*/g, '<em>$1</em>')
+  // Bullet points
+  .replace(/(?:^|\n)- (.*)/g, '<br>• $1')
+  // Convert remaining newlines to <br>
+  .replace(/\n/g, '<br>');
+  return html;
+}
+
+function appendMessage(role, text, imageUrl = null) {
+  const msgDiv = document.createElement('div');
+  msgDiv.className = `chat-message ${role}`;
+  // Parse Markdown for bot messages only (security + feature)
+  let contentHtml = role === 'bot' ? parseMarkdown(text) : text.replace(/\n/g, '<br>');
+  if (imageUrl) {
+    const safeUrl = String(imageUrl);
+    const safeAttrUrl = safeUrl.replace(/"/g, '&quot;');
+    const safeOnclickUrl = safeUrl.replace(/'/g, "\\'");
+    if (role === 'bot' && currentMode === 'image') {
+      const downloadName = `sufi-image-${Date.now()}.png`;
+      contentHtml += `
+                <div style="position: relative; display: inline-block; margin-top: 8px;">
+                    <img src="${safeAttrUrl}" class="chat-image-attachment" onclick="window.openImagePreview('${safeOnclickUrl}')" style="cursor:pointer;">
+                    <a href="${safeAttrUrl}" download="${downloadName}" style="position: absolute; bottom: 8px; right: 8px; width: 32px; height: 32px; border-radius: 999px; background: rgba(0,0,0,0.6); color: white; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+                        <i class="fas fa-download" style="font-size: 0.85rem;"></i>
+                    </a>
+                </div>
+            `;
+    } else {
+      contentHtml += `<br><img src="${safeAttrUrl}" class="chat-image-attachment" onclick="window.openImagePreview('${safeOnclickUrl}')" style="cursor:pointer;">`;
+    }
+  }
+  // Play AI sound for bot messages
+  if (role === 'bot' && currentMode !== 'voice') {
+    aiResponseAudio.currentTime = 0;
+    aiResponseAudio.play().catch(e => console.log('Audio play blocked:', e));
+  }
+  msgDiv.innerHTML = `<div class="message-content">${contentHtml}</div>`;
+  // Append to correct container based on mode
+  const targetContainerId = currentMode === 'image' ? 'chat-messages-image' : 'chat-messages-chat';
+  const targetContainer = document.getElementById(targetContainerId);
+  if (targetContainer) {
+    targetContainer.appendChild(msgDiv);
+  }
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+  if (role === 'user' || role === 'bot') {
+    addChatHistory(role === 'user' ? 'user' : 'assistant', text);
+  }
+}
+
+function showTypingIndicator(text = null) {
+  const id = 'typing-' + Date.now();
+  const msgDiv = document.createElement('div');
+  msgDiv.className = `chat-message bot`;
+  msgDiv.id = id;
+  let content = '';
+  if (text) {
+    content = `<div style="display:flex; align-items:center; gap:8px;"><span>${text}</span><div class="typing-indicator" style="display:inline-flex; margin:0;"><span></span><span></span><span></span></div></div>`;
+  } else {
+    content = `<div class="typing-indicator"><span></span><span></span><span></span></div>`;
+  }
+  msgDiv.innerHTML = `<div class="message-content">${content}</div>`;
+  // Append to correct container based on mode
+  const targetContainerId = currentMode === 'image' ? 'chat-messages-image' : 'chat-messages-chat';
+  const targetContainer = document.getElementById(targetContainerId);
+  if (targetContainer) {
+    targetContainer.appendChild(msgDiv);
+  }
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+  return id;
+}
+
+function updateTypingIndicator(id, text) {
+  const el = document.getElementById(id);
+  if (el) {
+    const contentDiv = el.querySelector('.message-content');
+    if (contentDiv) {
+      contentDiv.innerHTML = `<div style="display:flex; align-items:center; gap:8px;"><span>${text}</span><div class="typing-indicator" style="display:inline-flex; margin:0;"><span></span><span></span><span></span></div></div>`;
+    }
+  }
+}
+
+function removeTypingIndicator(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function showAnsweredStatus(id) {
+  if (!id) return;
+  updateTypingIndicator(id, "SuFi sudah mendapatkan jawaban...");
+  await wait(700);
+  removeTypingIndicator(id);
+}
+
+function setInputState(disabled) {
+  chatInput.disabled = disabled;
+  chatSendBtn.disabled = disabled;
+  chatFileInput.disabled = disabled;
+  if (voiceMicBtn) voiceMicBtn.disabled = disabled;
+  // Optional: Visual feedback
+  if (disabled) {
+    chatInput.parentElement.style.opacity = '0.5';
+    chatSendBtn.style.opacity = '0.5';
+  } else {
+    chatInput.parentElement.style.opacity = '1';
+    chatSendBtn.style.opacity = '1';
+    chatInput.focus();
+  }
+}
+
+function setupVoiceRecognition() {
+  if (voiceRecognizer) return;
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
+    appendMessage('bot', "Browser tidak mendukung fitur mic. Coba gunakan Chrome.");
+    if (voiceMicBtn) voiceMicBtn.disabled = true;
+    return;
+  }
+  voiceRecognizer = new SpeechRecognition();
+  voiceRecognizer.lang = 'id-ID';
+  voiceRecognizer.interimResults = false;
+  voiceRecognizer.continuous = false;
+  voiceRecognizer.onstart = function () {
+    isVoiceStarting = false;
+    setVoiceListening(true);
+  };
+  voiceRecognizer.onend = function () {
+    isVoiceStarting = false;
+    setVoiceListening(false);
+  };
+  voiceRecognizer.onerror = function () {
+    isVoiceStarting = false;
+    setVoiceListening(false);
+    appendMessage('bot', "Mic bermasalah. Coba izinkan akses mikrofon.");
+  };
+  voiceRecognizer.onresult = function (event) {
+    const result = event.results && event.results[0] && event.results[0][0];
+    const transcript = result ? result.transcript.trim() : '';
+    if (transcript) {
+      stopVoiceRecognition();
+      chatInput.value = transcript;
+      sendVoiceMessage(transcript);
+    }
+  };
+}
+
+function setVoiceListening(listening) {
+  isVoiceListening = listening;
+  if (voiceOrb) {
+    if (listening) {
+      voiceOrb.classList.add('is-listening');
+    } else {
+      voiceOrb.classList.remove('is-listening');
+    }
+  }
+  if (!voiceMicBtn) return;
+  const icon = voiceMicBtn.querySelector('i');
+  if (icon) {
+    icon.className = listening ? 'fas fa-stop' : 'fas fa-microphone';
+  }
+}
+
+function setVoiceStatus(state, text) {
+  if (!voiceStatus || !voiceStatusText || !voiceStatusIcon) return;
+  if (currentMode !== 'voice') return;
+  const stateClasses = ['is-idle', 'is-thinking', 'is-answered', 'is-starting', 'is-speaking'];
+  voiceStatus.classList.remove(...stateClasses);
+  const nextState = state ? `is-${state}` : 'is-idle';
+  voiceStatus.classList.add(nextState);
+  if (text) {
+    voiceStatusText.textContent = text;
+  }
+  let iconClass = 'fas fa-microphone';
+  if (state === 'thinking') iconClass = 'fas fa-brain';
+  if (state === 'answered') iconClass = 'fas fa-check-circle';
+  if (state === 'starting') iconClass = 'fas fa-circle-notch';
+  if (state === 'speaking') iconClass = 'fas fa-volume-up';
+  voiceStatusIcon.className = `voice-status-icon ${iconClass}`;
+}
+
+function setVoiceSpeaking(speaking) {
+  if (!voiceOrb) return;
+  if (currentMode !== 'voice') {
+    voiceOrb.classList.remove('is-speaking');
+    return;
+  }
+  if (speaking) {
+    voiceOrb.classList.add('is-speaking');
+  } else {
+    voiceOrb.classList.remove('is-speaking');
+  }
+  if (voiceMicBtn) {
+    voiceMicBtn.disabled = speaking;
+  }
+  if (!voiceMicBtn || isVoiceListening) return;
+  const icon = voiceMicBtn.querySelector('i');
+  if (!icon) return;
+  icon.className = speaking ? 'fas fa-volume-up' : 'fas fa-microphone';
+}
+
+function bindTtsEvents(audio, onStop, onPlay) {
+  if (!audio) return;
+  const stop = function () {
+    setVoiceSpeaking(false);
+    if (onStop) onStop();
+  };
+  audio.addEventListener('ended', stop);
+  audio.addEventListener('error', stop);
+  audio.addEventListener('pause', stop);
+  audio.addEventListener('playing', function () {
+    setVoiceSpeaking(true);
+    if (onPlay) onPlay();
+  });
+}
+
+function stopVoiceRecognition() {
+  if (voiceRecognizer && isVoiceListening) {
+    voiceRecognizer.stop();
+  }
+  isVoiceStarting = false;
+  setVoiceListening(false);
+}
+
+if (voiceMicBtn) {
+  voiceMicBtn.addEventListener('click', function () {
+    if (!voiceRecognizer) setupVoiceRecognition();
+    if (!voiceRecognizer) return;
+    if (isVoiceListening) {
+      voiceRecognizer.stop();
+    } else {
+      if (isVoiceStarting) return;
+      try {
+        isVoiceStarting = true;
+        setVoiceStatus('starting', 'User menyalakan mikrofon...');
+        voiceRecognizer.start();
+      } catch (e) {
+        isVoiceStarting = false;
+      }
+    }
+  });
+}
+
+function playTtsAudio(audioUrl, onStop, onPlay) {
+  if (!audioUrl) return;
+  if (ttsAudio) {
+    ttsAudio.pause();
+    ttsAudio.currentTime = 0;
+  }
+  ttsAudio = new Audio(audioUrl);
+  bindTtsEvents(ttsAudio, onStop, onPlay);
+  setVoiceSpeaking(true);
+  ttsAudio.play().catch(function () {
+  });
+}
+
+function playTtsBlob(blob, onStop, onPlay) {
+  if (!blob) return;
+  if (ttsAudio) {
+    ttsAudio.pause();
+    ttsAudio.currentTime = 0;
+  }
+  const audioUrl = URL.createObjectURL(blob);
+  ttsAudio = new Audio(audioUrl);
+  bindTtsEvents(ttsAudio, onStop, onPlay);
+  setVoiceSpeaking(true);
+  const revoke = function () {
+    URL.revokeObjectURL(audioUrl);
+  };
+  ttsAudio.addEventListener('ended', revoke);
+  ttsAudio.addEventListener('error', revoke);
+  ttsAudio.play().catch(function () {
+  });
+}
+
+function playTtsBase64(base64, mimeType, onStop, onPlay) {
+  if (!base64) return;
+  try {
+    const binary = atob(base64);
+    const len = binary.length;
+    const bytes = new Uint8Array(len);
+    for (let i = 0; i < len; i++) {
+      bytes[i] = binary.charCodeAt(i);
+    }
+    const blob = new Blob([bytes], {type: mimeType || 'audio/mpeg'});
+    playTtsBlob(blob, onStop, onPlay);
+  } catch (e) {
+  }
+}
+
+function isPcmMimeType(mimeType) {
+  if (!mimeType) return false;
+  return /audio\/l16/i.test(mimeType) || /codec=pcm/i.test(mimeType);
+}
+
+function parsePcmDataUrl(dataUrl) {
+  if (!dataUrl || typeof dataUrl !== 'string') return null;
+  if (!dataUrl.startsWith('data:')) return null;
+  const parts = dataUrl.split(',');
+  if (parts.length < 2) return null;
+  const meta = parts[0];
+  const base64 = parts.slice(1).join(',');
+  const rateMatch = meta.match(/rate=(\d+)/i);
+  const sampleRate = rateMatch ? Number(rateMatch[1]) : 24000;
+  const mimeType = meta.slice(5).split(';')[0];
+  return {base64, sampleRate, mimeType};
+}
+
+function buildWavBlobFromPcm(pcmBytes, sampleRate) {
+  if (!pcmBytes || !pcmBytes.length) return null;
+  const rate = sampleRate || 24000;
+  const numChannels = 1;
+  const bitsPerSample = 16;
+  const blockAlign = numChannels * bitsPerSample / 8;
+  const byteRate = rate * blockAlign;
+  const dataSize = pcmBytes.length;
+  const buffer = new ArrayBuffer(44);
+  const view = new DataView(buffer);
+  const writeString = function (offset, str) {
+    for (let i = 0; i < str.length; i++) {
+      view.setUint8(offset + i, str.charCodeAt(i));
+    }
+  };
+  writeString(0, 'RIFF');
+  view.setUint32(4, 36 + dataSize, true);
+  writeString(8, 'WAVE');
+  writeString(12, 'fmt ');
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true);
+  view.setUint16(22, numChannels, true);
+  view.setUint32(24, rate, true);
+  view.setUint32(28, byteRate, true);
+  view.setUint16(32, blockAlign, true);
+  view.setUint16(34, bitsPerSample, true);
+  writeString(36, 'data');
+  view.setUint32(40, dataSize, true);
+  return new Blob([buffer, pcmBytes], {type: 'audio/wav'});
+}
+
+function playPcmBase64AsWav(base64, sampleRate, onStop, onPlay) {
+  if (!base64) return;
+  try {
+    const binary = atob(base64);
+    const len = binary.length;
+    const bytes = new Uint8Array(len);
+    for (let i = 0; i < len; i++) {
+      bytes[i] = binary.charCodeAt(i);
+    }
+    const blob = buildWavBlobFromPcm(bytes, sampleRate);
+    if (blob) playTtsBlob(blob, onStop, onPlay);
+  } catch (e) {
+  }
+}
+
+function playPcmBufferAsWav(arrayBuffer, sampleRate, onStop, onPlay) {
+  if (!arrayBuffer) return;
+  const bytes = new Uint8Array(arrayBuffer);
+  const blob = buildWavBlobFromPcm(bytes, sampleRate);
+  if (blob) playTtsBlob(blob, onStop, onPlay);
+}
+
+function resolveBaseUrl(value) {
+  if (!value || typeof value !== 'string') return '';
+  let next = value.trim();
+  if (!next) return '';
+  if (!/^https?:\/\//i.test(next)) {
+    next = `https://${next}`;
+  }
+  return next.replace(/\/+$/, '');
+}
+
+async function requestTtsAudio(text) {
+  if (!text) return;
+  const ttsUrl = 'server/tts.php';
+  const isVoiceMode = currentMode === 'voice';
+  const ttsStatusId = isVoiceMode ? null : showTypingIndicator("SuFi sedang menyalakan mikrofon...");
+  if (isVoiceMode) {
+    setVoiceStatus('starting', 'SuFi menyalakan mikrofon...');
+  }
+  let ttsRes = null;
+  try {
+    ttsRes = await fetch(ttsUrl, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        prompt: text,
+        voiceName: 'Fenrir'
+      })
+    });
+  } catch (error) {
+    if (ttsStatusId) removeTypingIndicator(ttsStatusId);
+    setVoiceStatus('idle', 'Tekan mic untuk mulai');
+    appendMessage('bot', "Maaf, suara belum tersedia.");
+    return;
+  }
+  const contentType = (ttsRes.headers.get('content-type') || '').toLowerCase();
+  if (ttsRes.ok && (contentType.includes('audio/') || contentType.includes('application/octet-stream'))) {
+    if (isPcmMimeType(contentType)) {
+      const arrayBuffer = await ttsRes.arrayBuffer();
+      const rateMatch = contentType.match(/rate=(\d+)/i);
+      const sampleRate = rateMatch ? Number(rateMatch[1]) : 24000;
+      if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+      if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      playPcmBufferAsWav(arrayBuffer, sampleRate, function () {
+        if (ttsStatusId) removeTypingIndicator(ttsStatusId);
+        setVoiceStatus('idle', 'Tekan mic untuk mulai');
+      }, function () {
+        if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+        if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      });
+      return;
+    }
+    const blob = await ttsRes.blob();
+    if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+    if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+    playTtsBlob(blob, function () {
+      if (ttsStatusId) removeTypingIndicator(ttsStatusId);
+      setVoiceStatus('idle', 'Tekan mic untuk mulai');
+    }, function () {
+      if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+      if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+    });
+    return;
+  }
+  let ttsData = null;
+  try {
+    ttsData = await ttsRes.json();
+  } catch (e) {
+  }
+  if (!ttsRes.ok) {
+    if (ttsStatusId) removeTypingIndicator(ttsStatusId);
+    setVoiceStatus('idle', 'Tekan mic untuk mulai');
+    appendMessage('bot', "Maaf, suara belum tersedia.");
+    return;
+  }
+  if (ttsData && ttsData.audioUrl) {
+    const parsedPcm = parsePcmDataUrl(ttsData.audioUrl);
+    if (parsedPcm && isPcmMimeType(parsedPcm.mimeType)) {
+      if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+      if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      playPcmBase64AsWav(parsedPcm.base64, parsedPcm.sampleRate, function () {
+        if (ttsStatusId) removeTypingIndicator(ttsStatusId);
+        setVoiceStatus('idle', 'Tekan mic untuk mulai');
+      }, function () {
+        if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+        if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      });
+      return;
+    }
+    if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+    if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+    playTtsAudio(ttsData.audioUrl, function () {
+      if (ttsStatusId) removeTypingIndicator(ttsStatusId);
+      setVoiceStatus('idle', 'Tekan mic untuk mulai');
+    }, function () {
+      if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+      if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+    });
+    return;
+  }
+  const nestedAudioUrl = ttsData && ttsData.audio && ttsData.audio.url;
+  if (nestedAudioUrl) {
+    const parsedNested = parsePcmDataUrl(nestedAudioUrl);
+    if (parsedNested && isPcmMimeType(parsedNested.mimeType)) {
+      if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+      if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      playPcmBase64AsWav(parsedNested.base64, parsedNested.sampleRate, function () {
+        if (ttsStatusId) removeTypingIndicator(ttsStatusId);
+        setVoiceStatus('idle', 'Tekan mic untuk mulai');
+      }, function () {
+        if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+        if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      });
+      return;
+    }
+    if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+    if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+    playTtsAudio(nestedAudioUrl, function () {
+      if (ttsStatusId) removeTypingIndicator(ttsStatusId);
+      setVoiceStatus('idle', 'Tekan mic untuk mulai');
+    }, function () {
+      if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+      if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+    });
+    return;
+  }
+  const base64Audio = ttsData && (ttsData.audioContent || (ttsData.audio && ttsData.audio.data));
+  const base64Mime = (ttsData && ttsData.audio && ttsData.audio.mimeType) || 'audio/mpeg';
+  if (base64Audio) {
+    if (isPcmMimeType(base64Mime)) {
+      const rateMatch = base64Mime.match(/rate=(\d+)/i);
+      const sampleRate = rateMatch ? Number(rateMatch[1]) : 24000;
+      if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+      if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      playPcmBase64AsWav(base64Audio, sampleRate, function () {
+        if (ttsStatusId) removeTypingIndicator(ttsStatusId);
+        setVoiceStatus('idle', 'Tekan mic untuk mulai');
+      }, function () {
+        if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+        if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      });
+    } else {
+      if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+      if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      playTtsBase64(base64Audio, base64Mime, function () {
+        if (ttsStatusId) removeTypingIndicator(ttsStatusId);
+        setVoiceStatus('idle', 'Tekan mic untuk mulai');
+      }, function () {
+        if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+        if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      });
+    }
+    return;
+  }
+  const inlineData = ttsData && ttsData.candidates && ttsData.candidates[0] && ttsData.candidates[0].content && ttsData.candidates[0].content.parts && ttsData.candidates[0].content.parts[0] && ttsData.candidates[0].content.parts[0].inlineData;
+  if (inlineData && inlineData.data) {
+    const inlineMime = inlineData.mimeType || 'audio/mpeg';
+    if (isPcmMimeType(inlineMime)) {
+      const rateMatch = inlineMime.match(/rate=(\d+)/i);
+      const sampleRate = rateMatch ? Number(rateMatch[1]) : 24000;
+      if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+      if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      playPcmBase64AsWav(inlineData.data, sampleRate, function () {
+        if (ttsStatusId) removeTypingIndicator(ttsStatusId);
+        setVoiceStatus('idle', 'Tekan mic untuk mulai');
+      }, function () {
+        if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+        if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      });
+    } else {
+      if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+      if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      playTtsBase64(inlineData.data, inlineMime, function () {
+        if (ttsStatusId) removeTypingIndicator(ttsStatusId);
+        setVoiceStatus('idle', 'Tekan mic untuk mulai');
+      }, function () {
+        if (ttsStatusId) updateTypingIndicator(ttsStatusId, "SuFi sedang berbicara...");
+        if (isVoiceMode) setVoiceStatus('speaking', 'SuFi menjawab...');
+      });
+    }
+    return;
+  }
+  if (ttsStatusId) removeTypingIndicator(ttsStatusId);
+  setVoiceStatus('idle', 'Tekan mic untuk mulai');
+  appendMessage('bot', "Maaf, suara belum tersedia.");
+}
+
+async function sendVoiceMessage(text) {
+  const transcript = (text || '').trim();
+  if (!transcript) return;
+  chatInput.value = '';
+  chatInput.style.height = 'auto';
+  appendMessage('user', transcript);
+  setVoiceStatus('thinking', 'SuFi berfikir...');
+  setInputState(true);
+  const typingId = currentMode === 'voice' ? null : showTypingIndicator("SuFi sedang berfikir...");
+  try {
+    const formData = new FormData();
+    const finalPrompt = buildChatPrompt(transcript);
+    formData.append('prompt', finalPrompt);
+    const response = await fetch('server/chat.php', {method: 'POST', cache: 'no-store', body: formData});
+    const result = await response.json();
+    if (result.success || result.response) {
+      const reply = result.response || result.candidates?.[0]?.content?.parts?.[0]?.text;
+      const replyText = typeof reply === 'string' ? reply.trim() : '';
+      if (typingId) await showAnsweredStatus(typingId);
+      setVoiceStatus('answered', 'SuFi sudah mendapatkan jawaban...');
+      appendMessage('bot', replyText || '');
+      if (replyText) {
+        await requestTtsAudio(replyText);
+      }
+    } else {
+      if (typingId) removeTypingIndicator(typingId);
+      setVoiceStatus('idle', 'Tekan mic untuk mulai');
+      appendMessage('bot', "Maaf, saya sedang gangguan. Coba lagi nanti.");
+    }
+  } catch (error) {
+    if (typingId) removeTypingIndicator(typingId);
+    setVoiceStatus('idle', 'Tekan mic untuk mulai');
+    appendMessage('bot', "Terjadi kesalahan koneksi.");
+  } finally {
+    setInputState(false);
+  }
+}
+
+async function sendChatMessage() {
+  const text = chatInput.value.trim();
+  if (!text && !currentChatImage) return;
+  // Reset Input
+  chatInput.value = '';
+  chatInput.style.height = 'auto';
+  // Display User Message
+  let userImageDisplay = null;
+  let detectedAspectRatio = '1:1'; // Default
+  if (currentChatImage) {
+    userImageDisplay = chatImagePreview.src;
+    // Calculate Aspect Ratio from the preview image
+    if (chatImagePreview.naturalWidth && chatImagePreview.naturalHeight) {
+      const w = chatImagePreview.naturalWidth;
+      const h = chatImagePreview.naturalHeight;
+      const ratio = w / h;
+      // Find closest standard ratio
+      const standardRatios = {
+        '1:1': 1,
+        '16:9': 16 / 9,
+        '9:16': 9 / 16,
+        '4:3': 4 / 3,
+        '3:4': 3 / 4,
+        '21:9': 21 / 9,
+        '9:21': 9 / 21
+      };
+      let minDiff = Infinity;
+      for (const [key, val] of Object.entries(standardRatios)) {
+        const diff = Math.abs(ratio - val);
+        if (diff < minDiff) {
+          minDiff = diff;
+          detectedAspectRatio = key;
+        }
+      }
+      console.log(`Detected image ratio: ${w}x${h} (${ratio.toFixed(2)}) -> Closest: ${detectedAspectRatio}`);
+    }
+  }
+  appendMessage('user', text, userImageDisplay);
+  // Clear preview but keep file for sending
+  const fileToSend = currentChatImage;
+  clearChatImage();
+  // Disable Input
+  setInputState(true);
+  // Show Loading
+  const typingId = showTypingIndicator();
+  if (currentMode !== 'image') {
+    updateTypingIndicator(typingId, "SuFi sedang berfikir...");
+  }
+  try {
+    if (currentMode === 'image') {
+      // --- IMAGE GENERATION MODE ---
+      if (!fileToSend) {
+        // Text-to-Image Generation
+        updateTypingIndicator(typingId, "Mengoptimalkan prompt...");
+        const refineFormData = new FormData();
+        refineFormData.append('prompt', buildRefinePrompt('Refine this user request into a high quality image generation prompt (English). User request: "{text}". Output ONLY the prompt.', text));
+        const chatRes = await fetch('server/chat.php', {method: 'POST', cache: 'no-store', body: refineFormData});
+        const chatData = await chatRes.json();
+        const refinedPrompt = chatData.response || text;
+        // Show Refined Prompt
+        removeTypingIndicator(typingId);
+        appendMessage('bot', `**Prompt Teroptimasi:**\n${refinedPrompt}`);
+        // Start Generation Loading
+        const genTypingId = showTypingIndicator("Sedang membuat gambar...");
+        const genFormData = new FormData();
+        genFormData.append('instruction', refinedPrompt);
+        genFormData.append('aspectRatio', '1:1');
+        const genRes = await fetch('server/generate.php', {method: 'POST', cache: 'no-store', body: genFormData});
+        const genResult = await genRes.json();
+        removeTypingIndicator(genTypingId);
+        if (genResult.success && genResult.imageUrl) {
+          appendMessage('bot', `Berikut hasil gambarnya:`, genResult.imageUrl);
+          if (window.playSuccessSound) window.playSuccessSound();
+        } else {
+          appendMessage('bot', "Maaf, saya gagal membuat gambar. Pastikan instruksi jelas atau coba upload gambar referensi.");
+          if (window.playErrorSound) window.playErrorSound();
+        }
+      } else {
+        // Image-to-Image (Edit/Style Transfer)
+        updateTypingIndicator(typingId, "Mengoptimalkan instruksi...");
+        const rawInstruction = text || "Enhance this image";
+        const refineFormData = new FormData();
+        refineFormData.append('prompt', buildRefinePrompt('Refine this user request into a precise image editing instruction (English). User request: "{text}". The user has also provided an image which you can see. Output ONLY the instruction.', rawInstruction));
+        refineFormData.append('images[]', fileToSend);
+        const chatRes = await fetch('server/chat.php', {method: 'POST', cache: 'no-store', body: refineFormData});
+        const chatData = await chatRes.json();
+        const refinedInstruction = chatData.response || rawInstruction;
+        // Show Refined Instruction
+        removeTypingIndicator(typingId);
+        appendMessage('bot', `**Instruksi Teroptimasi:**\n${refinedInstruction}`);
+        // Start Generation Loading
+        const genTypingId = showTypingIndicator("Sedang memproses gambar...");
+        const genFormData = new FormData();
+        genFormData.append('instruction', refinedInstruction);
+        genFormData.append('images[]', fileToSend);
+        genFormData.append('aspectRatio', detectedAspectRatio);
+        const genRes = await fetch('server/generate.php', {method: 'POST', cache: 'no-store', body: genFormData});
+        const genResult = await genRes.json();
+        removeTypingIndicator(genTypingId);
+        if (genResult.success && genResult.imageUrl) {
+          appendMessage('bot', `Selesai! Ini hasilnya:`, genResult.imageUrl);
+          if (window.playSuccessSound) window.playSuccessSound();
+        } else {
+          appendMessage('bot', "Gagal memproses gambar. Silakan coba lagi.");
+          if (window.playErrorSound) window.playErrorSound();
+        }
+      }
+    } else {
+      // --- CHAT / Q&A MODE ---
+      const formData = new FormData();
+      const finalPrompt = buildChatPrompt(text);
+      formData.append('prompt', finalPrompt);
+      if (fileToSend) {
+        formData.append('images[]', fileToSend);
+      }
+      const response = await fetch('server/chat.php', {method: 'POST', cache: 'no-store', body: formData});
+      const result = await response.json();
+      if (result.success || result.response) {
+        const reply = result.response || result.candidates?.[0]?.content?.parts?.[0]?.text;
+        const replyText = typeof reply === 'string' ? reply.trim() : '';
+        await showAnsweredStatus(typingId);
+        appendMessage('bot', replyText || '');
+        if (currentMode === 'voice' && replyText) {
+          setVoiceStatus('answered', 'SuFi sudah mendapatkan jawaban...');
+          await requestTtsAudio(replyText);
+        }
+      } else {
+        removeTypingIndicator(typingId);
+        appendMessage('bot', "Maaf, saya sedang gangguan. Coba lagi nanti.");
+      }
+    }
+  } catch (error) {
+    console.error(error);
+    removeTypingIndicator(typingId);
+    appendMessage('bot', "Terjadi kesalahan koneksi.");
+  } finally {
+    // Re-enable Input
+    setInputState(false);
+  }
+}
