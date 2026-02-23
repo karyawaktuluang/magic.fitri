@@ -67,7 +67,7 @@ function onReady(fn) {
 
 onReady(() => {
   replaceBrandingName('Sulap Foto', window.APP_NAME);
-  replaceBrandingAssets('https://cdn.jsdelivr.net/gh/syifarahmat/sulap.foto@main/assets/sflogo.png', 'https://upload.wikimedia.org/wikipedia/commons/c/c6/Sign-check-icon.png');
+  replaceBrandingAssets('https://cdn.jsdelivr.net/gh/syifarahmat/sulap.foto@main/assets/sflogo.png', window.APP_LOGO);
   replaceBrandingAssets('https://cdn.jsdelivr.net/gh/syifarahmat/sulap.foto@main/', window.CDN);
   setTimeout(() => {
     const button = document.querySelector('button.sidebar-btn#' + (localStorage.getItem('sulapfoto_last_menu') ?? 'tab-beranda'));
