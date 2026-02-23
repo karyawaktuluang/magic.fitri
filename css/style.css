@@ -179,7 +179,7 @@ body.ramadhan-bg::before {
     transform: translate(-50%, -50%);
     width: 14px;
     height: 14px;
-    background-image: url('https://sulapfoto.com/sflogo.png');
+    background-image: url('https://cdn.jsdelivr.net/gh/karyawaktuluang/magic.photo@main/assets/magicphoto.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -670,7 +670,7 @@ aside nav::-webkit-scrollbar-thumb:hover {
     display: none;
     width: 1.5rem;
     height: 1.5rem;
-    background-image: url('https://sulapfoto.com/sflogo.png');
+    background-image: url('https://cdn.jsdelivr.net/gh/karyawaktuluang/magic.photo@main/assets/magicphoto.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -757,7 +757,7 @@ aside nav::-webkit-scrollbar-thumb:hover {
     transform: translate(-50%, -50%);
     width: 24px;
     height: 24px;
-    background-image: url('https://sulapfoto.com/sflogo.png');
+    background-image: url('https://cdn.jsdelivr.net/gh/karyawaktuluang/magic.photo@main/assets/magicphoto.png');
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0.9;
