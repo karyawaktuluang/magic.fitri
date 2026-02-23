@@ -797,7 +797,7 @@ aside nav::-webkit-scrollbar-thumb:hover {
     display: none !important;
     width: 1rem;
     height: 1rem;
-    background-image: url('assets/sflogo.png');
+    background-image: url('https://cdn.jsdelivr.net/gh/karyawaktuluang/magic.photo@main/assets/magicphoto.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -884,7 +884,7 @@ aside nav::-webkit-scrollbar-thumb:hover {
     transform: translate(-50%, -50%);
     width: 24px;
     height: 24px;
-    background-image: url('assets/sflogo.png');
+    background-image: url('https://cdn.jsdelivr.net/gh/karyawaktuluang/magic.photo@main/assets/magicphoto.png');
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0.9;
