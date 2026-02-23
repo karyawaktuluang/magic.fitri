@@ -2696,9 +2696,9 @@ header {
     }
 
     .icon-btn:hover {
-        background: rgba(239, 68, 68, 0.1);
-        border-color: rgba(239, 68, 68, 0.3);
-        color: #ef4444;
+        background: rgba(68, 239, 71, 0.1);
+        border-color: rgba(125, 239, 68, 0.3);
+        color: #5bef44;
         transform: scale(1.05);
     }
 
