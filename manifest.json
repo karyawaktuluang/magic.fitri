@@ -1,6 +1,7 @@
 {
     "name": "Sulap Fitri",
     "short_name": "Sulap Fitri",
+    "version": "1.2",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
